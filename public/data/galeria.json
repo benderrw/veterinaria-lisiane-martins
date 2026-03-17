@@ -1,0 +1,14 @@
+[
+  { "id": "1", "title": "Consulta", "description": "Atendimento clínico.", "imageUrl": "https://picsum.photos/600/600?random=1", "order": 1 },
+  { "id": "2", "title": "Recepção", "description": "Ambiente acolhedor.", "imageUrl": "https://picsum.photos/600/400?random=2", "order": 2 },
+  { "id": "3", "title": "Vacinação", "description": "Cuidados preventivos.", "imageUrl": "https://picsum.photos/600/300?random=3", "order": 3 },
+  { "id": "4", "title": "Espaço", "description": "Estrutura da clínica.", "imageUrl": "https://picsum.photos/400/600?random=4", "order": 4 },
+  { "id": "5", "title": "Atendimento", "description": "Humanizado e dedicado.", "imageUrl": "https://picsum.photos/400/400?random=5", "order": 5 },
+  { "id": "6", "title": "Equipe", "description": "Profissionais qualificados.", "imageUrl": "https://picsum.photos/600/600?random=6", "order": 6 },
+  { "id": "7", "title": "Sala", "description": "Ambiente de exames.", "imageUrl": "https://picsum.photos/400/400?random=7", "order": 7 },
+  { "id": "8", "title": "Cuidados", "description": "Seu pet em boas mãos.", "imageUrl": "https://picsum.photos/400/400?random=8", "order": 8 },
+  { "id": "9", "title": "Cirurgia", "description": "Procedimentos seguros.", "imageUrl": "https://picsum.photos/600/300?random=9", "order": 9 },
+  { "id": "10", "title": "Recuperação", "description": "Pós-operatório.", "imageUrl": "https://picsum.photos/400/400?random=10", "order": 10 },
+  { "id": "11", "title": "Prevenção", "description": "Check-ups regulares.", "imageUrl": "https://picsum.photos/400/400?random=11", "order": 11 },
+  { "id": "12", "title": "Pelotas", "description": "Clínica em Pelotas - RS.", "imageUrl": "https://picsum.photos/400/400?random=12", "order": 12 }
+]
