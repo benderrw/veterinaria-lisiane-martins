@@ -31,7 +31,7 @@ function StarRating({ value }: { value: number }) {
 export function Testimonials() {
   const [reviews, setReviews] = useState<ReviewItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [emblaRef] = useEmblaCarousel({
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
     watchDrag: true,
@@ -72,19 +72,56 @@ export function Testimonials() {
   }
 
   return (
-    <SectionWrapper id="depoimentos" variant="normal">
-      <h2 className="text-4xl font-light tracking-tight text-foreground [font-family:var(--font-heading),sans-serif]">
-        Depoimentos
-      </h2>
-      <p className="text-sm text-muted-foreground md:hidden">
-        Arraste para o lado para ver mais depoimentos.
+    <SectionWrapper id="depoimentos" variant="normal" aria-labelledby="depoimentos-heading">
+      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2
+            id="depoimentos-heading"
+            className="text-4xl font-light tracking-tight text-foreground [font-family:var(--font-heading),sans-serif]"
+          >
+            Depoimentos
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Avaliações reais dos tutores no Google sobre a Clínica Veterinária Lisiane Martins.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="hidden md:inline">Use as setas para navegar pelos depoimentos.</span>
+          <div className="inline-flex gap-2" aria-hidden>
+            <button
+              type="button"
+              onClick={() => emblaApi?.scrollPrev()}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-muted"
+            >
+              <span aria-hidden>‹</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => emblaApi?.scrollNext()}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-muted"
+            >
+              <span aria-hidden>›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-2 text-sm text-muted-foreground md:hidden">
+        Arraste para o lado ou use as setas para ver mais depoimentos.
       </p>
-      <div className="overflow-hidden" ref={emblaRef}>
+
+      <div
+        className="mt-4 overflow-hidden"
+        ref={emblaRef}
+        role="region"
+        aria-label="Carrossel de depoimentos dos tutores"
+      >
         <div className="flex gap-4">
           {reviews.map((review, index) => (
             <div
               key={`${review.author_name}-${index}`}
               className={`min-w-0 flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_32%] ${index === reviews.length - 1 ? "mr-4" : ""}`}
+              aria-label={`Depoimento ${index + 1} de ${reviews.length}`}
             >
               <article className="flex h-full flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm">
                 <StarRating value={review.rating} />

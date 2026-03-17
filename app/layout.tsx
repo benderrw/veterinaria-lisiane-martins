@@ -44,17 +44,11 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(`${baseUrl}/`),
     icons: {
       icon: [
-        { url: "/tmp/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/tmp/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-        { url: "/tmp/favicon.ico", sizes: "any" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon.ico", sizes: "any" },
       ],
-      apple: "/tmp/apple-touch-icon.png",
-      other: [
-        {
-          rel: "manifest",
-          url: "/tmp/site.webmanifest",
-        },
-      ],
+      apple: "/apple-touch-icon.png",
     },
     alternates: {
       canonical: `${SITE_URL}/`,
@@ -103,6 +97,7 @@ export default async function RootLayout({
         ? "http"
         : "https";
   const baseUrl = getBaseUrl(host, protocol);
+  const isProduction = process.env.NODE_ENV === "production";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -124,9 +119,22 @@ export default async function RootLayout({
       latitude: -31.764,
       longitude: -52.341,
     },
-    sameAs: [
-      "https://www.instagram.com/vet.lisianebtmartins/",
+    sameAs: ["https://www.instagram.com/vet.lisianebtmartins/"],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "09:00",
+        closes: "18:00",
+      },
     ],
+    priceRange: "R$R$",
   };
 
   return (
@@ -145,8 +153,12 @@ export default async function RootLayout({
           Pular para o conteúdo principal
         </a>
         {children}
-        <Analytics />
-        <SpeedInsights />
+        {isProduction && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

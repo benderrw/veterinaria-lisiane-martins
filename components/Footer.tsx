@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { EmailIcon } from "@/components/icons/EmailIcon";
@@ -12,14 +11,13 @@ export function Footer() {
     <footer className="border-t border-border bg-background" role="contentinfo">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div
-            className="relative h-10 w-36 shrink-0 overflow-hidden"
-          >
+          <div className="relative h-10 w-36 shrink-0 overflow-hidden">
             <Image
               src="/logo.png"
               alt="Clínica Veterinária Lisiane Martins"
-              fill
-              className="object-contain"
+              width={144}
+              height={40}
+              className="h-full w-auto object-contain"
             />
           </div>
 
@@ -74,7 +72,6 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 hover:text-primary"
-                    aria-label="Contato por WhatsApp"
                   >
                     <WhatsAppIcon className="size-4 shrink-0" aria-hidden />
                     +55 53 98116-6455
@@ -86,7 +83,6 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 hover:text-primary"
-                    aria-label="Instagram da clínica"
                   >
                     <InstagramIcon className="size-4 shrink-0" aria-hidden />
                     @vet.lisianebtmartins
