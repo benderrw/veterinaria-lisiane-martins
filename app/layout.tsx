@@ -28,14 +28,14 @@ export async function generateMetadata(): Promise<Metadata> {
   const host =
     headersList.get("x-forwarded-host") ??
     headersList.get("host") ??
-    "www.lisianemartins.vet";
+    "lisianemartins.vet";
   const protocol =
     headersList.get("x-forwarded-proto") === "https"
       ? "https"
       : host.includes("localhost")
         ? "http"
         : "https";
-  const baseUrl = getBaseUrl(host, protocol);
+  const baseUrl = `${protocol}://${host}`;
 
   return {
     title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "Clínica veterinária em Pelotas, RS. Consultas, vacinação, cirurgia e cuidados para seu pet. Atendimento humanizado.",
     metadataBase: new URL(`${baseUrl}/`),
     alternates: {
-      canonical: `${SITE_URL}/`,
+      canonical: "https://www.lisianemartins.vet",
     },
     openGraph: {
       title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/og.png",
+          url: `${baseUrl}/og.png`,
           width: 1200,
           height: 630,
           alt: "Clínica Veterinária Lisiane Martins - Pelotas, RS",
@@ -67,7 +67,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
       description:
         "Clínica veterinária em Pelotas, RS. Consultas, vacinação, cirurgia e cuidados para seu pet. Atendimento humanizado.",
-      images: ["/og.png"],
+      images: [`${baseUrl}/og.png`],
     },
   };
 }
