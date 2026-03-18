@@ -113,7 +113,7 @@ function MobileNav({ onLinkClick }: { onLinkClick: () => void }) {
         </Link>
       ))}
       {/* Accordion Informações: mesmo padrão visual */}
-      <Accordion type="single" collapsible className="w-full">
+      <Accordion className="w-full">
         {NAV_GROUPS.map((group) => (
           <AccordionItem key={group.label} value={group.label} className="border-0">
             <AccordionTrigger
