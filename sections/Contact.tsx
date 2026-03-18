@@ -1,7 +1,10 @@
+"use client";
+
 import { MapPin } from "lucide-react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import { motion } from "framer-motion";
 
 const ADDRESS = "Rua Viamão, 349, Laranjal, Pelotas - RS, Brasil";
 const PHONE = "+55 53 98116-6455";
@@ -15,7 +18,13 @@ export function Contact() {
       variant="highlight"
       className="border-y border-border bg-surface"
     >
-      <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+      <motion.div
+        className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="flex flex-col gap-8">
           <h2 className="text-4xl font-light tracking-tight text-foreground sm:text-5xl [font-family:var(--font-heading),sans-serif]">
             Contato
@@ -73,7 +82,7 @@ export function Contact() {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Instagram, HelpCircle } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const WHATSAPP_URL =
@@ -54,7 +55,7 @@ export function FaqIllustration({ className }: { className?: string }) {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:ring-3 focus-visible:ring-ring/50"
+          className={cn(buttonVariants({ variant: "default", size: "cta" }), "w-full")}
         >
           <WhatsAppIcon className="size-4" aria-hidden />
           Fale pelo WhatsApp
@@ -63,7 +64,7 @@ export function FaqIllustration({ className }: { className?: string }) {
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-primary bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:ring-3 focus-visible:ring-ring/50"
+          className={cn(buttonVariants({ variant: "secondary", size: "cta" }), "w-full")}
         >
           <Instagram className="size-4" aria-hidden />
           Instagram

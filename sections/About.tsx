@@ -1,16 +1,21 @@
+'use client';
+
 import Image from "next/image";
 import { SectionWrapper } from "@/components/SectionWrapper";
+import { motion } from "framer-motion";
 
 const ABOUT_IMAGE = "/sobre.jpg";
 
 const VALUES = [
   {
     title: "Serenidade",
-    description: "Ambiente acolhedor para que seu pet se sinta seguro durante o atendimento.",
+    description:
+      "Ambiente acolhedor para que seu pet se sinta seguro durante o atendimento.",
   },
   {
     title: "Propósito",
-    description: "Dedicação ao cuidado animal e à orientação dos tutores.",
+    description:
+      "Dedicação ao cuidado animal e à orientação dos tutores.",
   },
 ];
 
@@ -21,13 +26,19 @@ export function About() {
       variant="highlight"
       className="border-y border-border bg-surface"
     >
-      <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+      <motion.div
+        className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="relative aspect-square overflow-hidden rounded-2xl border border-border">
           <Image
             src={ABOUT_IMAGE}
             alt="Clínica Veterinária Lisiane Martins - ambiente de atendimento"
             fill
-            className="object-cover grayscale-[20%] opacity-95"
+            className="object-cover grayscale-20 opacity-95"
             loading="lazy"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
@@ -48,12 +59,14 @@ export function About() {
                 <h3 className="text-xs font-medium uppercase tracking-wider text-foreground [font-family:var(--font-heading),sans-serif]">
                   {title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{description}</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {description}
+                </p>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }

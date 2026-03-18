@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Stethoscope,
   Syringe,
@@ -7,6 +9,7 @@ import {
   PhoneCall,
 } from "lucide-react";
 import { SectionWrapper } from "@/components/SectionWrapper";
+import { motion } from "framer-motion";
 
 const SERVICES = [
   {
@@ -50,27 +53,35 @@ const SERVICES = [
 export function Services() {
   return (
     <SectionWrapper id="servicos" variant="normal">
-      <h2 className="text-4xl font-light tracking-tight text-foreground [font-family:var(--font-heading),sans-serif]">
-        Nossos serviços
-      </h2>
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {SERVICES.map(({ icon: Icon, title, description }) => (
-          <article
-            key={title}
-            className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow hover:shadow-md"
-          >
-            <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <Icon className="size-6" aria-hidden />
-            </div>
-            <h3 className="text-lg font-semibold [font-family:var(--font-heading),sans-serif]">
-              {title}
-            </h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {description}
-            </p>
-          </article>
-        ))}
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col gap-8"
+      >
+        <h2 className="text-4xl font-light tracking-tight text-foreground [font-family:var(--font-heading),sans-serif]">
+          Nossos serviços
+        </h2>
+        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map(({ icon: Icon, title, description }) => (
+            <article
+              key={title}
+              className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow hover:shadow-md"
+            >
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <Icon className="size-6" aria-hidden />
+              </div>
+              <h3 className="text-lg font-semibold [font-family:var(--font-heading),sans-serif]">
+                {title}
+              </h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </motion.div>
     </SectionWrapper>
   );
 }

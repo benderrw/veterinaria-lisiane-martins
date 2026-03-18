@@ -1,4 +1,9 @@
+'use client';
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const HERO_IMAGE = "/hero.jpg";
 
@@ -14,61 +19,55 @@ export function Hero() {
           src={HERO_IMAGE}
           alt=""
           fill
-          className="object-cover opacity-20"
+          className="object-cover"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/55 to-background/75" />
       </div>
 
-      <div className="relative z-10 flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-24 text-center sm:px-6 lg:px-8">
-        <h1
-          id="hero-heading"
-          className="max-w-3xl text-4xl font-light leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl [font-family:var(--font-heading),sans-serif]"
-        >
-          Cuidado e carinho para o seu pet em Pelotas
-        </h1>
-        <p className="max-w-xl text-lg text-muted-foreground">
-          Clínica Veterinária Lisiane Martins — atendimento humanizado para o que você ama.
-        </p>
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <a
-            href={process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/5553981166455"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-11 items-center justify-center gap-1.5 rounded-lg bg-primary px-6 text-lg font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:ring-3 focus-visible:ring-ring/50"
+      <motion.div
+        className="relative z-10 flex w-full max-w-7xl flex-col items-center gap-8 px-4 py-24 text-center sm:px-6 lg:grid lg:grid-cols-[1fr_minmax(0,560px)] lg:place-items-center lg:px-8 lg:pr-12"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div aria-hidden="true" className="hidden lg:block" />
+        <div className="flex w-full max-w-xl flex-col items-center gap-8 text-center lg:items-end lg:text-right">
+          <h1
+            id="hero-heading"
+            className="text-4xl font-light leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl [font-family:var(--font-heading),sans-serif] [text-shadow:0_2px_10px_rgba(0,0,0,0.7),0_0_2px_rgba(0,0,0,0.9)]"
           >
-            Agende sua consulta
-          </a>
+            <span className="font-semibold">Clínica Veterinária</span> em Pelotas com cuidado completo para seu pet
+          </h1>
+          <p className="text-lg text-white/95 [text-shadow:0_2px_8px_rgba(0,0,0,0.7),0_0_2px_rgba(0,0,0,0.8)]">
+            Consultas, vacinação, exames e cirurgias com atendimento humanizado. Acompanhamento contínuo para cães e gatos em Pelotas.
+          </p>
+          <div className="flex w-full max-w-sm flex-col gap-3 sm:flex-row sm:max-w-none sm:gap-4 lg:justify-end">
+            <a
+              href={process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/5553981166455"}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Agende sua consulta (abre em nova aba)"
+              className={cn(
+                buttonVariants({ variant: "default", size: "cta" }),
+                "w-full text-base font-semibold shadow-md sm:w-auto sm:text-lg focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-2"
+              )}
+            >
+              Agende sua consulta
+            </a>
+            <a
+              href="#contato"
+              className={cn(
+                buttonVariants({ variant: "secondary", size: "cta" }),
+                "w-full text-base font-semibold shadow-md sm:w-auto sm:text-lg"
+              )}
+            >
+              Ver informações de contato
+            </a>
+          </div>
         </div>
-
-        <div className="mt-6 grid gap-4 text-sm text-slate-600 sm:grid-cols-3">
-          <div className="rounded-2xl bg-primary/20 p-3 shadow-sm">
-            <p className="font-semibold text-slate-900">
-              Consultas e vacinação
-            </p>
-            <p className="text-xs text-slate-500">
-              Acompanhamento clínico e prevenção para manter o seu pet saudável.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-primary/20 p-3 shadow-sm">
-            <p className="font-semibold text-slate-900">
-              Exames e procedimentos
-            </p>
-            <p className="text-xs text-slate-500">
-              Estrutura para exames, cirurgias e cuidados em situações delicadas.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-primary/20 p-3 shadow-sm">
-            <p className="font-semibold text-slate-900">
-              Confiança dos tutores
-            </p>
-            <p className="text-xs text-slate-500">
-              Atendimento humanizado e avaliações positivas dos clientes em Pelotas.
-            </p>
-          </div>
-        </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
