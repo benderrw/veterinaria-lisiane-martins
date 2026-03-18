@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Clínica Veterinária Lisiane Martins – Landing Page
 
-## Getting Started
+Projeto de landing page institucional para a **Clínica Veterinária Lisiane Martins**, localizada em Pelotas/RS.  
+Construído com foco em conversão, clareza de informações e boa experiência em dispositivos móveis.
 
-First, run the development server:
+### Stack técnica
+
+- **Framework**: Next.js (App Router)
+- **Linguagem**: TypeScript
+- **UI**:
+  - Componentes React próprios em `components/` e `sections/`
+  - Ícones `lucide-react` e ícones customizados em `components/icons`
+- **Fonts**:
+  - `Plus_Jakarta_Sans` para headings (`--font-heading`)
+  - `Inter` para texto base (`--font-sans`)
+- **Analytics**:
+  - `@vercel/analytics/react`
+  - `@vercel/speed-insights/next`
+
+### Como rodar o projeto
+
+Instale as dependências (exemplo com `yarn`):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Suba o servidor de desenvolvimento:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Depois, acesse `http://localhost:3000` no navegador.
 
-## Learn More
+Build de produção:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+yarn build
+yarn start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Estrutura principal de pastas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `app/`
+  - `layout.tsx`: layout raiz da aplicação, definição de metadata (SEO, Open Graph, Twitter) e JSON-LD de `VeterinaryCare`.
+  - `page.tsx`: composição das seções principais da landing (hero, sobre, serviços, depoimentos, FAQ, contato, etc.).
+- `components/`
+  - `Header.tsx`: cabeçalho fixo com navegação (desktop/mobile).
+  - `Footer.tsx`: rodapé com logo, endereço, contatos e redes sociais.
+  - `components/ui/*`: componentes de UI reutilizáveis (botões, navegação, accordions, etc.).
+- `sections/`
+  - `Hero.tsx`, `About.tsx`, `Services.tsx`, `GalleryBento.tsx`, `Testimonials.tsx`, `Contact.tsx`, `faq/FaqSection.tsx`, `faq/FaqIllustration.tsx`.
 
-## Deploy on Vercel
+### Documentação adicional
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A documentação detalhada do projeto está em `docs/`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `docs/ARCHITECTURE.md`: visão de arquitetura e fluxo da página.
+- `docs/DESIGN-SYSTEM.md`: cores, tipografia, espaçamentos e componentes de UI atuais.
+- `docs/SECTIONS.md`: descrição das seções da landing (objetivos, estrutura e papel na conversão).
+- `docs/WEB-QUALITY.md`: estado atual de semântica, SEO on-page, acessibilidade e performance.
+- `docs/DOCS-ROADMAP.md`: resumo da documentação e próximos passos sugeridos.
+
+Use esses arquivos como referência ao evoluir o projeto ou ao reutilizar padrões em novos sites.
