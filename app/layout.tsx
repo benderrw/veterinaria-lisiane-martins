@@ -138,12 +138,6 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${plusJakarta.variable} ${inter.variable} font-sans antialiased`}>
-        <a
-          href="#main"
-          className="sr-only rounded bg-primary px-4 py-2 text-primary-foreground focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:m-0 focus:h-auto focus:w-auto focus:overflow-visible focus:whitespace-normal focus:px-4 focus:py-2 focus:outline-none focus:ring-2 focus:ring-ring focus:[clip:auto]"
-        >
-          Pular para o conteúdo principal
-        </a>
         {children}
         {isProduction && (
           <>

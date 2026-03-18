@@ -6,9 +6,9 @@ const variantStyles: Record<
   SectionVariant,
   { maxWidth: string; padding: string }
 > = {
-  normal: { maxWidth: "max-w-6xl", padding: "py-16 lg:py-24" },
+  normal: { maxWidth: "max-w-7xl", padding: "py-16 lg:py-24" },
   highlight: { maxWidth: "max-w-7xl", padding: "py-32" },
-  faq: { maxWidth: "max-w-6xl", padding: "py-32" },
+  faq: { maxWidth: "max-w-7xl", padding: "py-32" },
 };
 
 interface SectionWrapperProps {
@@ -36,7 +36,7 @@ export function SectionWrapper({
         className
       )}
     >
-      <div className={cn("flex w-full flex-col gap-8", maxWidth)}>
+      <div className={cn("mx-auto flex w-full flex-col gap-8", maxWidth)}>
         {children}
       </div>
     </Component>

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { FaqIllustration } from "./FaqIllustration";
 import { SectionWrapper } from "@/components/SectionWrapper";
+import { motion } from "framer-motion";
 
 const FAQ_ITEMS = [
   {
@@ -45,34 +46,42 @@ export function FaqSection() {
       className="border-t border-border bg-surface"
       aria-labelledby="faq-heading"
     >
-      <h2
-        id="faq-heading"
-        className="text-4xl font-light tracking-tight text-foreground [font-family:var(--font-heading),sans-serif]"
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col gap-8"
       >
-        Perguntas frequentes
-      </h2>
-      <div className="grid gap-8 lg:grid-cols-6 lg:items-stretch">
-        <div className="rounded-2xl border border-border bg-elevated/50 p-6 shadow-sm lg:col-span-4">
-          <Accordion
-            defaultValue={FAQ_ITEMS[0]?.id ? [FAQ_ITEMS[0].id] : []}
-            className="w-full"
-          >
-            {FAQ_ITEMS.map((item) => (
-              <AccordionItem key={item.id} value={item.id}>
-                <AccordionTrigger className="py-4 text-left font-medium">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <h2
+          id="faq-heading"
+          className="text-4xl font-light tracking-tight text-foreground [font-family:var(--font-heading),sans-serif]"
+        >
+          Perguntas frequentes
+        </h2>
+        <div className="grid gap-8 lg:grid-cols-6 lg:items-stretch">
+          <div className="rounded-2xl border border-border bg-elevated/50 p-6 shadow-sm lg:col-span-4">
+            <Accordion
+              defaultValue={FAQ_ITEMS[0]?.id ? [FAQ_ITEMS[0].id] : []}
+              className="w-full"
+            >
+              {FAQ_ITEMS.map((item) => (
+                <AccordionItem key={item.id} value={item.id}>
+                  <AccordionTrigger className="py-4 text-left font-medium">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+          <div className="lg:col-span-2">
+            <FaqIllustration className="h-full" />
+          </div>
         </div>
-        <div className="lg:col-span-2">
-          <FaqIllustration className="h-full" />
-        </div>
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }
