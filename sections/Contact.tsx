@@ -28,7 +28,7 @@ export function Contact() {
       variant="highlight"
       className="border-y border-border bg-background"
     >
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:items-start lg:gap-16">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:items-center lg:gap-16">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -37,7 +37,7 @@ export function Contact() {
             hidden: {},
             show: { transition: { staggerChildren: 0.07, delayChildren: 0.04 } },
           }}
-          className="flex flex-col gap-8"
+          className="flex w-full flex-col gap-8 items-end text-right"
         >
           <motion.h2
             variants={fadeUp}
@@ -45,13 +45,8 @@ export function Contact() {
           >
             Contato
           </motion.h2>
-          <div className="flex flex-col gap-8 text-foreground">
-            <motion.div variants={fadeUp} className="flex gap-4">
-              <MapPin
-                className="mt-0.5 size-5 shrink-0 text-muted-foreground"
-                weight="duotone"
-                aria-hidden
-              />
+          <div className="flex w-full flex-col gap-8 text-foreground items-end">
+            <motion.div variants={fadeUp} className="flex max-w-full items-center justify-end gap-4">
               <div>
                 <p className="text-bloom-body-sm font-medium text-muted-foreground">
                   Endereço
@@ -65,12 +60,13 @@ export function Contact() {
                   {ADDRESS}
                 </a>
               </div>
-            </motion.div>
-            <motion.div variants={fadeUp} className="flex gap-4">
-              <WhatsAppIcon
-                className="mt-0.5 size-5 shrink-0 text-muted-foreground"
+              <MapPin
+                className="size-5 shrink-0 text-muted-foreground"
+                weight="duotone"
                 aria-hidden
               />
+            </motion.div>
+            <motion.div variants={fadeUp} className="flex max-w-full items-center justify-end gap-4">
               <div>
                 <p className="text-bloom-body-sm font-medium text-muted-foreground">
                   Telefone / WhatsApp
@@ -84,12 +80,12 @@ export function Contact() {
                   {PHONE}
                 </a>
               </div>
-            </motion.div>
-            <motion.div variants={fadeUp} className="flex gap-4">
-              <EmailIcon
-                className="mt-0.5 size-5 shrink-0 text-muted-foreground"
+              <WhatsAppIcon
+                className="size-5 shrink-0 text-muted-foreground"
                 aria-hidden
               />
+            </motion.div>
+            <motion.div variants={fadeUp} className="flex max-w-full items-center justify-end gap-4">
               <div>
                 <p className="text-bloom-body-sm font-medium text-muted-foreground">
                   E-mail
@@ -101,6 +97,10 @@ export function Contact() {
                   {EMAIL}
                 </a>
               </div>
+              <EmailIcon
+                className="size-5 shrink-0 text-muted-foreground"
+                aria-hidden
+              />
             </motion.div>
           </div>
         </motion.div>
@@ -109,7 +109,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ type: "spring", stiffness: 100, damping: 22 }}
-          className="flex flex-col gap-3 lg:translate-y-6"
+          className="flex flex-col gap-3"
         >
           <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border/80 shadow-[var(--shadow-card-rest)] ring-1 ring-black/[0.04]">
             <iframe

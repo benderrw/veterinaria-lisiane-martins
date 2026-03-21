@@ -3,13 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  List,
-  Stethoscope,
-  EnvelopeSimple,
-  Info,
-  Question,
-} from "@phosphor-icons/react";
+import { List, Stethoscope } from "@phosphor-icons/react";
 import {
   Sheet,
   SheetContent,
@@ -25,12 +19,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const NAV_LINKS = [
+const NAV_LINKS: Array<{
+  href: string;
+  label: string;
+  icon?: typeof Stethoscope;
+}> = [
   { href: "#servicos", label: "Serviços", icon: Stethoscope },
-  { href: "#sobre", label: "Sobre nós", icon: Info },
-  { href: "#faq", label: "FAQ", icon: Question },
-  { href: "#contato", label: "Contato", icon: EnvelopeSimple },
-] as const;
+  { href: "#sobre", label: "Sobre nós" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#contato", label: "Contato" },
+];
 
 function DesktopNav() {
   return (
@@ -45,7 +43,9 @@ function DesktopNav() {
                 "text-foreground/90 hover:text-primary hover:bg-muted/50 bg-transparent h-auto py-1.5"
               )}
             >
-              <Icon className="size-4 shrink-0" weight="duotone" aria-hidden />
+              {Icon ? (
+                <Icon className="size-4 shrink-0" weight="duotone" aria-hidden />
+              ) : null}
               {label}
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -68,7 +68,13 @@ function MobileNav({ onLinkClick }: { onLinkClick: () => void }) {
           onClick={onLinkClick}
           className={rowLink}
         >
-          <Icon className="size-5 shrink-0 text-foreground/70" weight="duotone" aria-hidden />
+          {Icon ? (
+            <Icon
+              className="size-5 shrink-0 text-foreground/70"
+              weight="duotone"
+              aria-hidden
+            />
+          ) : null}
           <span>{label}</span>
         </Link>
       ))}

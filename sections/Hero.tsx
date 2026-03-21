@@ -74,7 +74,7 @@ export function Hero() {
               Cuidado clínico de verdade
             </span>{" "}
             <span className="text-bloom-on-dark-mid md:text-bloom-emphasis-mid">
-              para tutores em Pelotas que não abrem mão do bem-estar do pet
+              para tutores que não abrem mão do bem-estar do pet
             </span>
           </motion.h1>
           <motion.p
