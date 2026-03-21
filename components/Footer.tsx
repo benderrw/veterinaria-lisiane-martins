@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { MapPin } from "@phosphor-icons/react";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -9,7 +11,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background" role="contentinfo">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-10 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="relative h-10 w-36 shrink-0 overflow-hidden">
             <Image
@@ -37,7 +39,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-start gap-2 hover:text-primary"
                 >
-                  <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden />
+                  <MapPin className="mt-0.5 size-4 shrink-0" weight="duotone" aria-hidden />
                   Rua Viamão, 349
                   <br />
                   Laranjal, Pelotas - RS

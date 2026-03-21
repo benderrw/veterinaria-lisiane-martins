@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { HelpCircle } from "lucide-react";
+import { Question } from "@phosphor-icons/react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -35,7 +35,7 @@ export function FaqIllustration({ className }: { className?: string }) {
             />
           ) : (
             <div className="flex size-full items-center justify-center text-muted-foreground" aria-hidden>
-              <HelpCircle className="size-10" />
+              <Question className="size-10" weight="duotone" />
             </div>
           )}
         </div>

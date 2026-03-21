@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/accordion";
 import { FaqIllustration } from "./FaqIllustration";
 import { SectionWrapper } from "@/components/SectionWrapper";
-import { motion } from "framer-motion";
 
 const FAQ_ITEMS = [
   {
@@ -64,21 +63,15 @@ export function FaqSection() {
       className="border-t border-border bg-surface"
       aria-labelledby="faq-heading"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex flex-col gap-8"
-      >
+      <div className="flex flex-col gap-10">
         <h2
           id="faq-heading"
-          className="text-bloom-h2 font-light text-foreground"
+          className="text-bloom-h2 font-light text-foreground tracking-tight"
         >
           Perguntas frequentes
         </h2>
-        <div className="grid gap-8 lg:grid-cols-6 lg:items-stretch">
-          <div className="rounded-2xl border border-border bg-elevated/50 p-6 shadow-sm lg:col-span-4">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
+          <div className="rounded-2xl border border-border/80 bg-elevated/80 p-6 shadow-[var(--shadow-faq-panel)] ring-1 ring-black/[0.04] dark:bg-elevated/50 lg:col-span-7">
             <Accordion
               defaultValue={FAQ_ITEMS[0]?.id ? [FAQ_ITEMS[0].id] : []}
               className="w-full"
@@ -95,11 +88,11 @@ export function FaqSection() {
               ))}
             </Accordion>
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-5 lg:pl-2">
             <FaqIllustration className="h-full" />
           </div>
         </div>
-      </motion.div>
+      </div>
     </SectionWrapper>
   );
 }
