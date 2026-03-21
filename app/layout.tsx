@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
     description:
-      "Clínica veterinária em Pelotas, RS. Consultas, vacinação, cirurgia e cuidados para seu pet. Atendimento humanizado.",
+      "Clínica veterinária em Pelotas para cães e gatos: consultas, vacinação, exames e cirurgias com hora marcada, orientação clara e cuidado humanizado.",
     metadataBase: new URL(`${baseUrl}/`),
     alternates: {
       canonical: "https://www.lisianemartins.vet",
@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
       description:
-        "Clínica veterinária em Pelotas, RS. Consultas, vacinação, cirurgia e cuidados para seu pet. Atendimento humanizado.",
+        "Clínica veterinária em Pelotas para cães e gatos: consultas, vacinação, exames e cirurgias com hora marcada, orientação clara e cuidado humanizado.",
       url: `${baseUrl}/`,
       siteName: "Clínica Veterinária Lisiane Martins",
       locale: "pt_BR",
@@ -66,7 +66,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
       description:
-        "Clínica veterinária em Pelotas, RS. Consultas, vacinação, cirurgia e cuidados para seu pet. Atendimento humanizado.",
+        "Clínica veterinária em Pelotas para cães e gatos: consultas, vacinação, exames e cirurgias com hora marcada, orientação clara e cuidado humanizado.",
       images: [`${baseUrl}/og.png`],
     },
   };

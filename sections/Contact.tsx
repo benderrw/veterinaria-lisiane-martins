@@ -5,6 +5,7 @@ import { SectionWrapper } from "@/components/SectionWrapper";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { motion } from "framer-motion";
+import { WHATSAPP_HREF } from "@/lib/site";
 
 const ADDRESS = "Rua Viamão, 349, Laranjal, Pelotas - RS, Brasil";
 const PHONE = "+55 53 98116-6455";
@@ -19,26 +20,26 @@ export function Contact() {
       className="border-y border-border bg-surface"
     >
       <motion.div
-        className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20"
+        className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="flex flex-col gap-8">
-          <h2 className="text-4xl font-light tracking-tight text-foreground sm:text-5xl [font-family:var(--font-heading),sans-serif]">
+          <h2 className="text-bloom-h2 font-light text-foreground">
             Contato
           </h2>
-          <div className="flex flex-col gap-6 text-foreground">
+          <div className="flex flex-col gap-8 text-foreground">
             <div className="flex gap-3">
               <MapPin className="mt-0.5 size-5 shrink-0 text-muted-foreground" aria-hidden />
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Endereço</p>
+                <p className="text-bloom-body-sm font-medium text-muted-foreground">Endereço</p>
                 <a
                   href={MAPS_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base hover:text-primary"
+                  className="text-bloom-body hover:text-primary"
                 >
                   {ADDRESS}
                 </a>
@@ -47,12 +48,12 @@ export function Contact() {
             <div className="flex gap-3">
               <WhatsAppIcon className="mt-0.5 size-5 shrink-0 text-muted-foreground" aria-hidden />
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Telefone / WhatsApp</p>
+                <p className="text-bloom-body-sm font-medium text-muted-foreground">Telefone / WhatsApp</p>
                 <a
-                  href={process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/5553981166455"}
+                  href={WHATSAPP_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base hover:text-primary"
+                  className="text-bloom-body hover:text-primary"
                 >
                   {PHONE}
                 </a>
@@ -61,8 +62,8 @@ export function Contact() {
             <div className="flex gap-3">
               <EmailIcon className="mt-0.5 size-5 shrink-0 text-muted-foreground" aria-hidden />
               <div>
-                <p className="text-sm font-medium text-muted-foreground">E-mail</p>
-                <a href={`mailto:${EMAIL}`} className="text-base hover:text-primary">
+                <p className="text-bloom-body-sm font-medium text-muted-foreground">E-mail</p>
+                <a href={`mailto:${EMAIL}`} className="text-bloom-body hover:text-primary">
                   {EMAIL}
                 </a>
               </div>

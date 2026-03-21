@@ -21,12 +21,12 @@ export function Footer() {
             />
           </div>
 
-          <div className="grid min-w-0 gap-8 text-sm md:grid-cols-2">
+          <div className="text-bloom-body grid min-w-0 gap-8 md:grid-cols-2">
             {/* Localização / Horários */}
             <div className="min-w-0">
               <h2
                 id="footer-location-heading"
-                className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground [font-family:var(--font-heading),sans-serif]"
+                className="text-bloom-body-sm mb-3 font-semibold uppercase tracking-wider text-foreground"
               >
                 Localização
               </h2>
@@ -52,7 +52,7 @@ export function Footer() {
             >
               <h2
                 id="footer-contact-heading"
-                className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground [font-family:var(--font-heading),sans-serif]"
+                className="text-bloom-body-sm mb-3 font-semibold uppercase tracking-wider text-foreground"
               >
                 Contato
               </h2>
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border pt-4 text-center text-xs text-muted-foreground">
+        <div className="text-bloom-body-sm border-t border-border pt-4 text-center text-muted-foreground">
           <p>
             © {CURRENT_YEAR} Clínica Veterinária Lisiane Martins · Todos os direitos reservados
           </p>

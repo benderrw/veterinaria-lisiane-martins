@@ -60,24 +60,26 @@ export function Services() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="flex flex-col gap-8"
       >
-        <h2 className="text-4xl font-light tracking-tight text-foreground [font-family:var(--font-heading),sans-serif]">
+        <h2 className="text-bloom-h2 font-light text-foreground">
           Nossos serviços
         </h2>
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map(({ icon: Icon, title, description }) => (
             <article
               key={title}
-              className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow hover:shadow-md"
+              className="flex flex-row items-start gap-4 rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow hover:shadow-md"
             >
-              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <Icon className="size-6" aria-hidden />
               </div>
-              <h3 className="text-lg font-semibold [font-family:var(--font-heading),sans-serif]">
-                {title}
-              </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {description}
-              </p>
+              <div className="flex min-w-0 flex-col gap-2">
+                <h3 className="text-bloom-h5 font-semibold text-foreground">
+                  {title}
+                </h3>
+                <p className="text-bloom-body-sm text-muted-foreground leading-relaxed">
+                  {description}
+                </p>
+              </div>
             </article>
           ))}
         </div>

@@ -30,8 +30,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { WHATSAPP_HREF } from "@/lib/site";
 
 const NAV_GROUPS = [
   {
@@ -191,13 +192,37 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop: NavigationMenu com dropdown + links com ícones */}
-        <div className="hidden md:block">
+        {/* Desktop: nav + CTA secundário (mesmo destino do hero, menos proeminente) */}
+        <div className="hidden items-center gap-3 md:flex">
           <DesktopNav />
+          <a
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Agendar pelo WhatsApp (abre em nova aba)"
+            className={cn(
+              buttonVariants({ variant: "outline", size: "sm" }),
+              "shrink-0 font-semibold focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-2"
+            )}
+          >
+            Agendar
+          </a>
         </div>
 
-        {/* Mobile: Sheet + links diretos + Accordion */}
-        <div className="md:hidden">
+        {/* Mobile: CTA + menu */}
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Agendar pelo WhatsApp (abre em nova aba)"
+            className={cn(
+              buttonVariants({ variant: "outline", size: "sm" }),
+              "shrink-0 font-semibold text-xs sm:text-sm focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-2"
+            )}
+          >
+            Agendar
+          </a>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               render={

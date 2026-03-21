@@ -15,25 +15,43 @@ const FAQ_ITEMS = [
     id: "horario",
     question: "Quais são os horários de atendimento?",
     answer:
-      "Consulte nossos horários pelo telefone ou WhatsApp. Atendemos com hora marcada para melhor acolher você e seu pet.",
+      "Segunda a sexta, das 9h às 18h. Confirme pelo WhatsApp ou telefone e agende com hora marcada — assim reduzimos espera e dedicamos mais tempo ao seu pet.",
   },
   {
     id: "primeira-consulta",
     question: "Preciso agendar a primeira consulta?",
     answer:
-      "Sim. Entre em contato pelo WhatsApp ou telefone para agendar. Na primeira consulta trazemos o histórico de vacinas e cuidados do seu pet, se tiver.",
+      "Sim. Entre em contato pelo WhatsApp ou telefone para agendar. Na primeira consulta, traga o histórico de vacinas e cuidados do seu pet, se tiver, para avaliarmos tudo com calma.",
+  },
+  {
+    id: "sem-agendar",
+    question: "Posso ir sem agendar?",
+    answer:
+      "Trabalhamos com hora marcada para garantir atenção e organização. Se precisar de encaixe, chame no WhatsApp: avaliamos a possibilidade conforme a agenda do dia.",
+  },
+  {
+    id: "especies",
+    question: "Vocês atendem apenas cães e gatos?",
+    answer:
+      "Sim. Nossa equipe está focada no cuidado clínico de cães e gatos, com protocolos e equipamentos adequados a essas espécies.",
+  },
+  {
+    id: "valores",
+    question: "Consigo saber valores antes da consulta?",
+    answer:
+      "Valores podem variar conforme o procedimento. No WhatsApp ou telefone explicamos o que será feito e as opções de pagamento, para você decidir com transparência.",
   },
   {
     id: "emergencia",
     question: "Atendem emergências?",
     answer:
-      "Em casos de emergência, entre em contato pelo telefone ou WhatsApp para orientação e possibilidade de atendimento.",
+      "Em urgência, ligue ou envie mensagem no WhatsApp. Orientamos o melhor encaminhamento e, quando possível, encaixamos atendimento conforme a gravidade e a disponibilidade.",
   },
   {
     id: "formas-pagamento",
     question: "Quais formas de pagamento são aceitas?",
     answer:
-      "Consulte as formas de pagamento no momento do agendamento ou na recepção.",
+      "Pix, cartão e outras opções podem estar disponíveis. Confirme no agendamento ou na recepção o que melhor se aplica ao seu caso.",
   },
 ];
 
@@ -55,7 +73,7 @@ export function FaqSection() {
       >
         <h2
           id="faq-heading"
-          className="text-4xl font-light tracking-tight text-foreground [font-family:var(--font-heading),sans-serif]"
+          className="text-bloom-h2 font-light text-foreground"
         >
           Perguntas frequentes
         </h2>
@@ -70,7 +88,7 @@ export function FaqSection() {
                   <AccordionTrigger className="py-4 text-left font-medium">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed">
+                  <AccordionContent className="text-bloom-body text-muted-foreground leading-relaxed">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>

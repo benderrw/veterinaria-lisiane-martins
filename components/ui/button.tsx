@@ -11,11 +11,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground [a]:hover:bg-primary/80 transition-[background-color,border-color,color,transform,box-shadow,opacity] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:translate-y-px",
+          "bg-primary text-primary-foreground shadow-[var(--shadow-primary-btn)] transition-[background-color,box-shadow,filter] duration-300 ease-out hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-primary-btn-hover)] [a]:hover:bg-[var(--primary-hover)] active:brightness-[0.96] active:shadow-[var(--shadow-primary-btn)]",
         outline:
           "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 [a]:hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground transition-[background-color,border-color,color,transform,box-shadow,opacity] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:translate-y-px",
+          "border-secondary/50 bg-white/40 text-secondary/85 hover:border-secondary hover:bg-secondary hover:text-secondary-foreground [a]:hover:border-secondary [a]:hover:bg-secondary [a]:hover:text-secondary-foreground aria-expanded:border-secondary aria-expanded:bg-secondary aria-expanded:text-secondary-foreground transition-[background-color,border-color,color,opacity] duration-200 ease-out active:translate-y-px",
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:

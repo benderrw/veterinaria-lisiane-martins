@@ -1,3 +1,7 @@
+/*
+ * Layout Bloom (referência BLOOM/README.md): grelha horizontal 4 → 8 → 12 colunas (mobile → tablet → desktop);
+ * espaçamento em múltiplos de 8px (8, 16, 32, 64, …). Utilitário: .grid-bloom
+ */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -86,6 +90,45 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: #0F7C7A;
+
+  /* Botão primário: hover + sombras on-brand (teal + toque rosa) */
+  --primary-hover: color-mix(in oklab, var(--primary) 78%, black);
+  --shadow-primary-btn: 0 2px 10px -2px color-mix(in oklab, var(--primary) 25%, transparent),
+    0 1px 3px -1px color-mix(in oklab, var(--secondary) 12%, transparent);
+  --shadow-primary-btn-hover: 0 12px 32px -8px color-mix(in oklab, var(--primary) 35%, transparent),
+    0 4px 14px -4px color-mix(in oklab, var(--secondary) 18%, transparent);
+
+  /* Bloom — tipografia (README § Sistema de design); famílias via layout.tsx inalteradas */
+  --bloom-emphasis-high: color-mix(in oklab, var(--foreground) 87%, transparent);
+  --bloom-emphasis-mid: color-mix(in oklab, var(--foreground) 60%, transparent);
+  --bloom-emphasis-low: color-mix(in oklab, var(--foreground) 38%, transparent);
+
+  --type-p: 1rem;
+  --type-h6: 1.25rem;
+  --type-h5: 1.5625rem;
+  --type-h4: 1.95rem;
+  --type-h3: 2.44rem;
+  --type-h2: 3.05rem;
+  --type-h1: 3.8125rem;
+
+  --track-h1: -0.02em;
+  --track-h3: -0.015em;
+  --track-h6: -0.005em;
+  --track-h2: -0.015em;
+
+  --lead-p: 1.5;
+  --lead-h1: 1;
+  --lead-h2: 1.1;
+  --lead-h3: 1.12;
+  --lead-h4: 1.3;
+  --lead-h5: 1.15;
+  --lead-h6: 1.2;
+
+  /* Fluid type: mínimo legível → token Bloom a partir de ~lg */
+  --type-h1-fluid: clamp(1.75rem, 2.4vw + 1.1rem, var(--type-h1));
+  --type-h2-fluid: clamp(1.875rem, 2.2vw + 1rem, var(--type-h2));
+  --type-h3-fluid: clamp(1.125rem, 1.5vw + 0.75rem, var(--type-h3));
+  --type-h2-soft-fluid: clamp(1.5rem, 1.4vw + 1rem, var(--type-h3));
 }
 
 .dark {
@@ -121,6 +164,92 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: #2BA8A5;
+
+  --primary-hover: color-mix(in oklab, var(--primary) 88%, white);
+  --shadow-primary-btn: 0 2px 12px -2px color-mix(in oklab, var(--primary) 45%, transparent),
+    0 1px 4px -1px color-mix(in oklab, var(--secondary) 15%, transparent);
+  --shadow-primary-btn-hover: 0 14px 36px -8px color-mix(in oklab, var(--primary) 50%, transparent),
+    0 6px 18px -4px color-mix(in oklab, var(--secondary) 22%, transparent);
+}
+
+@utility text-bloom-h1 {
+  font-size: var(--type-h1-fluid);
+  line-height: var(--lead-h1);
+  letter-spacing: var(--track-h1);
+}
+
+@utility text-bloom-h2 {
+  font-size: var(--type-h2-fluid);
+  line-height: var(--lead-h2);
+  letter-spacing: var(--track-h2);
+}
+
+@utility text-bloom-h2-soft {
+  font-size: var(--type-h2-soft-fluid);
+  line-height: var(--lead-h2);
+  letter-spacing: var(--track-h2);
+}
+
+@utility text-bloom-h3 {
+  font-size: var(--type-h3-fluid);
+  line-height: var(--lead-h3);
+  letter-spacing: var(--track-h3);
+}
+
+@utility text-bloom-h4 {
+  font-size: var(--type-h4);
+  line-height: var(--lead-h4);
+}
+
+@utility text-bloom-h5 {
+  font-size: var(--type-h5);
+  line-height: var(--lead-h5);
+}
+
+@utility text-bloom-h6 {
+  font-size: var(--type-h6);
+  line-height: var(--lead-h6);
+  letter-spacing: var(--track-h6);
+}
+
+@utility text-bloom-body {
+  font-size: var(--type-p);
+  line-height: var(--lead-p);
+}
+
+@utility text-bloom-body-sm {
+  font-size: calc(var(--type-p) * 0.875);
+  line-height: var(--lead-p);
+}
+
+/* Rótulos pequenos (uppercase / valores); corpo padrão Bloom é 16px (—type-p) */
+@utility text-bloom-caption {
+  font-size: 0.75rem;
+  line-height: var(--lead-p);
+  letter-spacing: var(--track-h6);
+}
+
+@utility text-bloom-intro {
+  font-size: var(--type-h5);
+  line-height: var(--lead-p);
+}
+
+@utility text-bloom-emphasis-high {
+  color: var(--bloom-emphasis-high);
+}
+
+@utility text-bloom-emphasis-mid {
+  color: var(--bloom-emphasis-mid);
+}
+
+@utility text-bloom-emphasis-low {
+  color: var(--bloom-emphasis-low);
+}
+
+@layer components {
+  .grid-bloom {
+    @apply grid grid-cols-4 gap-8 md:grid-cols-8 lg:grid-cols-12;
+  }
 }
 
 @layer base {
@@ -133,18 +262,54 @@
   html {
     @apply font-sans;
   }
+
+  p {
+    font-size: var(--type-p);
+    line-height: var(--lead-p);
+  }
+
+  h1 {
+    font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 300;
+    font-size: var(--type-h1-fluid);
+    line-height: var(--lead-h1);
+    letter-spacing: var(--track-h1);
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  }
 }
 
-@keyframes whatsapp-pulse-keyframes {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgb(37 211 102 / 0.4);
+/* Anel no ::before: não sobrescreve shadow-lg do botão nem “fecha” o halo (80%→100%). */
+@keyframes whatsapp-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(37 211 102 / 0);
   }
-  80% {
-    box-shadow: 0 0 0 14px rgb(37 211 102 / 0);
+  10% {
+    box-shadow: 0 0 0 0 rgb(37 211 102 / 0.45);
+  }
+  45% {
+    box-shadow: 0 0 0 16px rgb(37 211 102 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 16px rgb(37 211 102 / 0);
   }
 }
 
 .whatsapp-pulse {
-  animation: whatsapp-pulse-keyframes 3s ease-out infinite;
+  overflow: visible;
+}
+
+.whatsapp-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: whatsapp-pulse-ring 2.8s ease-out infinite;
 }
