@@ -207,6 +207,19 @@
 		var(--shadow-card-rest), inset 0 1px 0 rgb(255 255 255 / 0.06);
 }
 
+/* Âncoras: scroll suave só quando não há preferência por movimento reduzido; em pointer coarse (touch primário) mantém instantâneo para evitar saltos com momentum scroll e UI do browser. */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+@media (pointer: coarse) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
 @utility text-bloom-h1 {
 	font-size: var(--type-h1);
 	line-height: var(--lead-h1);

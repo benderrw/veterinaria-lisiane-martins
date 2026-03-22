@@ -134,7 +134,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR">
       <head>
         <script
           type="application/ld+json"

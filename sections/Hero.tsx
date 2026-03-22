@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { WHATSAPP_HREF } from "@/lib/site";
 import { HeroMagneticCta } from "@/components/HeroMagneticCta";
 
-const HERO_IMAGE = "/hero.jpg";
+const HERO_IMAGE = "/images/hero.jpg";
 
 const container = {
   hidden: { opacity: 0 },
@@ -32,7 +32,7 @@ export function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-heading"
-      className="relative min-h-[calc(100dvh-var(--header-height))] overflow-hidden bg-background scroll-mt-[var(--header-height)]"
+      className="relative min-h-[calc(100svh-var(--header-height))] overflow-hidden bg-background scroll-mt-[var(--header-height)]"
     >
       <div className="absolute inset-0">
         <Image
@@ -56,7 +56,7 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-var(--header-height))] w-full max-w-[1400px] flex-col justify-end px-4 pb-20 pt-3 sm:px-6 md:items-end md:justify-center md:pb-24 md:pt-6 md:pl-10 md:pr-12 lg:pr-16 xl:pr-20">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-var(--header-height))] w-full max-w-[1400px] flex-col justify-end px-4 pb-20 pt-3 sm:px-6 md:items-end md:justify-center md:pb-24 md:pt-6 md:pl-10 md:pr-12 lg:pr-16 xl:pr-20">
         <motion.div
           variants={container}
           initial="hidden"

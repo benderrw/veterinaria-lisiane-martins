@@ -29,8 +29,8 @@ Este documento descreve como a landing page é estruturada em termos de layout, 
 
 Responsável por:
 
-- Definir **fonts** globais (`Plus_Jakarta_Sans` para headings, `Inter` para texto).
-- Importar estilos globais (`app/globals.css`).
+- Definir **fonts** globais: `Geist` (`--font-sans`), `Geist_Mono` (`--font-geist-mono`), `Outfit` (`--font-heading`).
+- Importar estilos globais (`app/globals.css`), onde também ficam regras de **scroll para âncoras**: `scroll-behavior: smooth` apenas com `prefers-reduced-motion: no-preference`, e `scroll-behavior: auto` em `pointer: coarse` (touch primário) para evitar saltos no mobile.
 - Configurar **SEO e social** via `generateMetadata()`:
   - `title`, `description`.
   - Open Graph (imagem `og.png`, título, descrição).
@@ -49,7 +49,7 @@ export default async function RootLayout({ children }) {
   // calcula host, protocol e baseUrl
   // monta jsonLd de VeterinaryCare
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR">
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
@@ -100,7 +100,7 @@ export default function Home() {
   4. `Contact`
   5. `FaqSection`
 - `Footer`: rodapé com logo, endereço, contatos e direitos autorais.
-- `FloatingWhatsAppButton`: botão flutuante com animação de “pulse” levando ao WhatsApp.
+- `FloatingWhatsAppButton`: botão flutuante com animação de “pulse” levando ao WhatsApp; visibilidade com `IntersectionObserver` na hero e na secção seguinte (`#servicos`), com `setState` só quando o estado derivado (`show` / `hide`) muda (menos re-renders com muitos `threshold`).
 
 Diagrama de alto nível:
 
@@ -145,14 +145,12 @@ Responsabilidades:
 
 Principais características:
 
-- Usa `lucide-react` para ícones de navegação.
+- Usa `@phosphor-icons/react` para ícones de navegação.
 - Usa componentes de UI em `components/ui`:
-  - `NavigationMenu`, `Sheet`, `Accordion`, `Button`.
-- Navegação separada em:
-  - `NAV_GROUPS` (grupo “Informações”: Sobre nós, FAQ).
-  - `NAV_LINKS` (Serviços, Contato).
-- `DesktopNav`: menu horizontal com dropdown para “Informações”.
-- `MobileNav`: navegação colapsada em `Sheet` com accordion e links grandes e clicáveis.
+  - `NavigationMenu`, `Sheet`, `Button`.
+- Lista plana `NAV_LINKS` (âncoras: Serviços, Sobre, FAQ, Contato).
+- `DesktopNav`: menu horizontal (`NavigationMenu`).
+- `MobileNav`: links em `Sheet` lateral (sem accordion).
 
 ---
 
@@ -211,13 +209,11 @@ Todas as seções de conteúdo (Services, About, Contact, FAQ, Testimonials) usa
 
 #### `Hero` (`sections/Hero.tsx`)
 
-- Seção de destaque inicial, com:
-  - Imagem de fundo (`/hero.jpg`) em `Image` full-bleed.
-  - Headline com `h1` e foco em “Clínica Veterinária em Pelotas”.
-  - Subtítulo explicando o tipo de atendimento.
-  - Dois CTAs:
-    - Botão principal para **agendar consulta via WhatsApp** (`variant="default"`, `size="cta"`).
-    - Botão secundário linkando para a seção de contato.
+- Seção de destaque inicial (`id="hero"`), com:
+  - Altura mínima `min-h-[calc(100svh-var(--header-height))]` (unidade **svh** para altura estável no mobile; evita saltos quando a UI do browser muda).
+  - Imagem de fundo (`/images/hero.jpg`) em `Image` full-bleed (`fill`, `priority`).
+  - Headline com `h1` e texto orientado a Pelotas / bem-estar do pet.
+  - CTA principal **Agende sua consulta** via `HeroMagneticCta` (WhatsApp, nova aba).
 - Animações com `framer-motion` na entrada.
 
 #### `Services` (`sections/Services.tsx`)
@@ -225,7 +221,7 @@ Todas as seções de conteúdo (Services, About, Contact, FAQ, Testimonials) usa
 - Lista de cartões com os principais serviços da clínica:
   - Consultas, Vacinação, Cirurgias, Cardiologia, Preventivo, Atendimento humanizado.
 - Cada item contém:
-  - Ícone `lucide-react`.
+  - Ícone `@phosphor-icons/react`.
   - Título.
   - Descrição curta.
 - Layout em grid responsivo (`sm:grid-cols-2`, `lg:grid-cols-3`).

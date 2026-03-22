@@ -9,8 +9,9 @@ Visão geral do estado atual de **semântica**, **acessibilidade básica**, **SE
 #### 1.1. Estrutura de documento
 
 - `RootLayout`:
-  - `<html lang="pt-BR" className="scroll-smooth">`:
+  - `<html lang="pt-BR">`:
     - `lang` configurado corretamente para português do Brasil.
+    - Scroll suave para âncoras via `app/globals.css`: `scroll-behavior: smooth` quando `prefers-reduced-motion: no-preference`, e `scroll-behavior: auto` em `pointer: coarse` (touch primário) para reduzir conflitos com scroll no mobile.
   - `<body>` aplica fontes e cores via classes globais.
 
 - `Home` (`app/page.tsx`):
