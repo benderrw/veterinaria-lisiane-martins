@@ -33,7 +33,7 @@ const SERVICES: Service[] = [
     detail:
       "Também oferecemos teleorientação com hora marcada: esclarecimento de dúvidas, retornos e continuidade do cuidado com explicação acessível. Quando o caso exigir exame físico ou procedimento, o atendimento segue presencialmente na clínica.",
     featuredImage: {
-      src: "https://picsum.photos/seed/lm-consultas/880/560",
+      src: "/images/veterinary-consultation.jpg",
       alt:
         "Ambiente de consulta veterinária, atendimento clínico para cães e gatos.",
     },

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/SectionWrapper";
 
-const ABOUT_IMAGE = "/sobre.jpg";
+const ABOUT_IMAGE = "/images/about-team.jpg";
 
 const VALUES = [
   {

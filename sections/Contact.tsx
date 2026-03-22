@@ -46,9 +46,9 @@ export function Contact() {
             Contato
           </motion.h2>
           <div className="flex w-full flex-col gap-8 text-foreground items-end">
-            <motion.div variants={fadeUp} className="flex max-w-full items-center justify-end gap-4">
+            <motion.div variants={fadeUp} className="flex max-w-full items-start justify-end gap-4">
               <div>
-                <p className="text-bloom-body-sm font-medium text-muted-foreground">
+                <p className="text-bloom-body-md font-medium text-muted-foreground">
                   Endereço
                 </p>
                 <a
@@ -66,9 +66,9 @@ export function Contact() {
                 aria-hidden
               />
             </motion.div>
-            <motion.div variants={fadeUp} className="flex max-w-full items-center justify-end gap-4">
+            <motion.div variants={fadeUp} className="flex max-w-full items-start justify-end gap-4">
               <div>
-                <p className="text-bloom-body-sm font-medium text-muted-foreground">
+                <p className="text-bloom-body-md font-medium text-muted-foreground">
                   Telefone / WhatsApp
                 </p>
                 <a
@@ -85,9 +85,9 @@ export function Contact() {
                 aria-hidden
               />
             </motion.div>
-            <motion.div variants={fadeUp} className="flex max-w-full items-center justify-end gap-4">
+            <motion.div variants={fadeUp} className="flex max-w-full items-start justify-end gap-4">
               <div>
-                <p className="text-bloom-body-sm font-medium text-muted-foreground">
+                <p className="text-bloom-body-md font-medium text-muted-foreground">
                   E-mail
                 </p>
                 <a
