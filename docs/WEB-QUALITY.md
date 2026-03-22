@@ -47,10 +47,7 @@ Pontos positivos:
   - `aria-labelledby="faq-heading"` no `SectionWrapper`.
   - Título `h2` com `id` correspondente.
   - `Accordion` provê experiência acessível para expandir/perguntas (herdado do componente UI).
-
-- `FaqIllustration`:
-  - Contêiner com `aria-labelledby`.
-  - Fallback de imagem com ícone `HelpCircle` e texto de apoio.
+  - Imagem lateral (desktop) decorativa: `alt=""`, `aria-hidden` no contentor, `pointer-events-none`.
 
 Possíveis melhorias futuras:
 

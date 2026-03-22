@@ -19,7 +19,7 @@ Este documento descreve como a landing page é estruturada em termos de layout, 
   - `Services`
   - `About`
   - `Contact`
-  - `faq/FaqSection` (+ `faq/FaqIllustration`)
+  - `faq/FaqSection`
   - `Testimonials`
   - `GalleryBento` (atualmente export vazio, pensado para futura galeria).
 
@@ -244,18 +244,12 @@ Todas as seções de conteúdo (Services, About, Contact, FAQ, Testimonials) usa
   - Mapa embed de Google Maps em `iframe` responsivo.
 - Usa `SectionWrapper` com `variant="highlight"`.
 
-#### `FaqSection` + `FaqIllustration` (`sections/faq/*`)
+#### `FaqSection` (`sections/faq/FaqSection.tsx`)
 
-- `FaqSection`:
-  - Título “Perguntas frequentes”.
-  - Accordion com perguntas e respostas comuns (horários, primeira consulta, emergências, pagamento).
-  - Layout em duas colunas no desktop: accordion + ilustração.
-- `FaqIllustration`:
-  - Card lateral com imagem (`/faq-illustration.png`) ou fallback com ícone `HelpCircle`.
-  - Texto de chamada “Ainda tem dúvidas?”.
-  - Dois botões CTA:
-    - WhatsApp.
-    - Instagram.
+- Título “Perguntas frequentes”.
+- Accordion com perguntas e respostas comuns (horários, primeira consulta, emergências, pagamento).
+- Desktop: acordeão em `lg:col-span-6`; imagem de apoio em camada absoluta alinhada à grelha, sangrando até à borda direita do viewport.
+- Mobile: mesma imagem empilhada abaixo do acordeão.
 
 #### `Testimonials` (`sections/Testimonials.tsx`)
 
@@ -278,12 +272,10 @@ Todas as seções de conteúdo (Services, About, Contact, FAQ, Testimonials) usa
   - Usado em:
     - `Hero` (CTA principal).
     - `Contact` (telefone/WhatsApp).
-    - `FaqIllustration` (botão de contato).
     - `Footer` (link de contato).
 - **Instagram**:
   - Link fixo `https://www.instagram.com/vet.lisianebtmartins/` em:
     - JSON-LD (`sameAs`).
-    - `FaqIllustration`.
     - `Footer`.
 - **Google Maps**:
   - Links e `iframe` com endereço da clínica.
