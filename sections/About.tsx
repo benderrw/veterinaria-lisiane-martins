@@ -4,18 +4,18 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/SectionWrapper";
 
-const ABOUT_IMAGE = "/images/about-team.jpg";
+const ABOUT_IMAGE = "/images/about-team.webp";
 
 const VALUES = [
   {
     title: "Serenidade",
     description:
-      "Ambiente acolhedor para que seu pet se sinta seguro durante o atendimento.",
+      "Ambiente acolhedor para o pet e calma para você acompanhar cada etapa com confiança.",
   },
   {
     title: "Propósito",
     description:
-      "Dedicação ao cuidado animal e à orientação dos tutores.",
+      "Cuidado clínico responsável e orientação honesta — para decisões que fazem sentido na vida real.",
   },
 ];
 
@@ -77,18 +77,18 @@ export function About() {
             variants={block}
             className="text-bloom-intro text-muted-foreground leading-relaxed max-w-[65ch]"
           >
-            A Clínica Veterinária Lisiane Martins atua em Pelotas com foco em
-            atendimento humanizado e qualidade no cuidado ao seu animal. Nossa
-            equipe está pronta para oferecer consultas, vacinação, cirurgias e
-            acompanhamento preventivo, sempre em diálogo com você.
+            A Clínica Veterinária Lisiane Martins está no bairro Laranjal, em
+            Pelotas, com equipe veterinária focada em consultas, vacinação,
+            cirurgias e medicina preventiva — sempre com tempo para ouvir você e
+            examinar o pet com atenção.
           </motion.p>
           <motion.p
             variants={block}
             className="text-bloom-body text-muted-foreground leading-relaxed max-w-[65ch]"
           >
-            Diferente de um atendimento apenas pontual, priorizamos explicações que você
-            entende e um plano de cuidado alinhado à realidade do seu pet — no Laranjal,
-            com hora marcada.
+            Não é só “passar na clínica”: explicamos o que observamos, o que
+            pode esperar e próximos passos, para o cuidado acompanhar o dia a dia
+            do seu animal — com hora marcada e organização.
           </motion.p>
           <motion.div
             variants={block}

@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 import { WHATSAPP_HREF } from "@/lib/site";
 
 const BENEFITS = [
-  "Hora marcada: mais atenção para você e para o pet, sem fila interminável.",
-  "Consultas, vacinação, exames e cirurgias com equipe dedicada em Pelotas.",
-  "Orientação clara em cada etapa — do preventivo ao pós-operatório.",
+  "Hora marcada: menos espera e mais tempo de consulta para o seu pet.",
+  "Equipe veterinária no Laranjal, Pelotas: consultas, vacinação, exames e cirurgias.",
+  "Você entende o plano de cuidado — do preventivo ao pós-operatório.",
 ] as const;
 
 const listParent = {
@@ -54,8 +54,8 @@ export function FinalCta() {
             <span className="font-semibold">sem deixar o cuidado para depois</span>
           </h2>
           <p className="text-bloom-intro text-muted-foreground leading-relaxed max-w-[65ch]">
-            Agende pelo WhatsApp e tire dúvidas sobre horários, preparo da consulta ou
-            encaminhamento do seu caso.
+            Chame no WhatsApp para agendar, tirar dúvidas sobre horários, preparo da
+            visita ou encaixe — respondemos com o que fizer sentido para o seu caso.
           </p>
         </div>
         <div className="flex flex-col gap-8 lg:pl-4">

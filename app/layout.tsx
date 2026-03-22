@@ -4,6 +4,8 @@ import { Geist, Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { FAQ_ITEMS } from "@/lib/faq-data";
+import { SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -41,18 +43,32 @@ export async function generateMetadata(): Promise<Metadata> {
         : "https";
   const baseUrl = `${protocol}://${host}`;
 
+  const metaDescription =
+    "Clínica veterinária no Laranjal, Pelotas: cães e gatos. Consultas, vacinação, exames e cirurgias com hora marcada, explicações claras e cuidado humanizado. Agende pelo WhatsApp.";
+
   return {
     title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
-    description:
-      "Clínica veterinária em Pelotas para cães e gatos: consultas, vacinação, exames e cirurgias com hora marcada, orientação clara e cuidado humanizado.",
+    description: metaDescription,
     metadataBase: new URL(`${baseUrl}/`),
     alternates: {
-      canonical: "https://www.lisianemartins.vet",
+      canonical: SITE_URL,
     },
+    robots:
+      process.env.VERCEL_ENV != null &&
+      process.env.VERCEL_ENV !== "production"
+        ? { index: false, follow: false }
+        : undefined,
+    keywords: [
+      "veterinário Pelotas",
+      "clínica veterinária Pelotas",
+      "veterinário Laranjal",
+      "clínica veterinária cães e gatos",
+      "consulta veterinária hora marcada",
+    ],
+    manifest: "/site.webmanifest",
     openGraph: {
       title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
-      description:
-        "Clínica veterinária em Pelotas para cães e gatos: consultas, vacinação, exames e cirurgias com hora marcada, orientação clara e cuidado humanizado.",
+      description: metaDescription,
       url: `${baseUrl}/`,
       siteName: "Clínica Veterinária Lisiane Martins",
       locale: "pt_BR",
@@ -69,8 +85,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "Clínica Veterinária Lisiane Martins | Pelotas - RS",
-      description:
-        "Clínica veterinária em Pelotas para cães e gatos: consultas, vacinação, exames e cirurgias com hora marcada, orientação clara e cuidado humanizado.",
+      description: metaDescription,
       images: [`${baseUrl}/og.png`],
     },
   };
@@ -95,46 +110,67 @@ export default async function RootLayout({
   const baseUrl = getBaseUrl(host, protocol);
   const isProduction = process.env.NODE_ENV === "production";
 
+  const faqEntities = FAQ_ITEMS.map((item) => ({
+    "@type": "Question" as const,
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer" as const,
+      text: item.answer,
+    },
+  }));
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "VeterinaryCare",
-    name: "Clínica Veterinária Lisiane Martins",
-    image: `${baseUrl}/og.png`,
-    url: baseUrl,
-    telephone: "+5553981166455",
-    email: "vet.lisianebtmartins@gmail.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Rua Viamão, 349",
-      addressLocality: "Pelotas",
-      addressRegion: "RS",
-      addressCountry: "BR",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: -31.764,
-      longitude: -52.341,
-    },
-    sameAs: ["https://www.instagram.com/vet.lisianebtmartins/"],
-    openingHoursSpecification: [
+    "@graph": [
       {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
+        "@type": ["LocalBusiness", "VeterinaryCare"],
+        "@id": `${baseUrl}/#veterinary`,
+        name: "Clínica Veterinária Lisiane Martins",
+        image: `${baseUrl}/og.png`,
+        url: baseUrl,
+        telephone: "+5553981166455",
+        email: "vet.lisianebtmartins@gmail.com",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Rua Viamão, 349",
+          addressLocality: "Pelotas",
+          addressRegion: "RS",
+          postalCode: "96090-180",
+          addressCountry: "BR",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: -31.768615,
+          longitude: -52.239981,
+        },
+        sameAs: ["https://www.instagram.com/vet.lisianebtmartins/"],
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+            ],
+            opens: "09:00",
+            closes: "18:00",
+          },
         ],
-        opens: "09:00",
-        closes: "18:00",
+        priceRange: "$$",
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${baseUrl}/#faq`,
+        url: `${baseUrl}/#faq`,
+        mainEntity: faqEntities,
       },
     ],
-    priceRange: "R$R$",
   };
 
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR">
       <head>
         <script
           type="application/ld+json"

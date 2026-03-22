@@ -179,7 +179,7 @@ Tamanhos principais (`size`):
 - `cta`:
   - `h-12`, `min-w-[220px]` (desktop maior).
   - `rounded-full`.
-  - Usado em CTAs de destaque (Hero, FaqIllustration).
+  - Usado em CTAs de destaque (ex.: Hero).
 - `icon`, `icon-xs`, `icon-sm`, `icon-lg`: para botões com ícone.
 
 Boas práticas observadas:
@@ -258,8 +258,8 @@ São SVGs em React que seguem `currentColor`, facilitando o uso com as cores do 
   - `HERO_IMAGE = "/hero.jpg"` como background full-bleed.
 - `About`:
   - `ABOUT_IMAGE = "/sobre.jpg"` em card com borda e `rounded-2xl`.
-- `FaqIllustration`:
-  - `FAQ_IMAGE = "/faq-illustration.png"` com fallback para ícone `HelpCircle`.
+- `FaqSection`:
+  - `FAQ_BG_IMAGE = "/faq-side-placeholder.png"` (`next/image`), fundo full-bleed à direita no desktop; bloco empilhado no mobile.
 
 ---
 

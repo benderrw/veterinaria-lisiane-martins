@@ -145,11 +145,11 @@ Este documento descreve o objetivo, estrutura de conteúdo e papel na conversão
   - Título (`h2`): “Perguntas frequentes”.
   - Accordion (`Accordion` de `components/ui/accordion`):
     - Itens com `question` e `answer` (horário, primeira consulta, emergências, formas de pagamento).
-  - Coluna de apoio com `FaqIllustration`:
-    - Título “Ainda tem dúvidas?”.
-    - Texto incentivando contato via WhatsApp/Instagram.
-    - Botão CTA para WhatsApp.
-    - Botão CTA para Instagram.
+  - Imagem de apoio (ex.: `public/images/confused-dog.png`, substituível), decorativa (`alt` vazio / `aria-hidden` no bloco desktop):
+    - **Desktop (`lg+`)**: camada absoluta no `<section>` (`SectionWrapper` com `bleedBackground`), `inset-y-0` — cobre toda a altura da secção, incluindo o `py-32` do variant `faq`; o `left` alinha ao **início da coluna da grelha imediatamente após o acordeão**, depois do `gap-10`; à direita até à borda da secção; `overflow-x-clip`; `pointer-events-none`.
+    - **Mobile**: sem faixa lateral nem imagem empilhada (só acordeão).
+    - Sem link; contacto via `FloatingWhatsAppButton` e restantes secções.
+    - **Blueprint reutilizável** (repositório BLOOM): `DOCS/faq-section-full-bleed-background-blueprint.md`.
 
 - **Papel na conversão**:
   - Tirar “barreiras mentais” comuns:
@@ -159,12 +159,9 @@ Este documento descreve o objetivo, estrutura de conteúdo e papel na conversão
   - Direcionar quem ainda está inseguro a tirar dúvidas em canais diretos.
 
 - **Layout / responsividade**:
-  - Em desktop:
-    - Accordion ocupa `lg:col-span-4`.
-    - Ilustração ocupa `lg:col-span-2`.
-  - Em mobile:
-    - Accordion acima, ilustração abaixo.
-  - Usa `SectionWrapper` com `variant="faq"` e `bg-surface`.
+  - Em desktop: acordeão `lg:col-span-6` (grelha 12); o fundo full-bleed à direita ocupa o espaço equivalente às colunas restantes + sangria até ao viewport.
+  - Em mobile: acordeão a largura útil.
+  - Usa `SectionWrapper` com `variant="faq"`, `bg-surface` e `overflow-x-clip`.
 
 ---
 

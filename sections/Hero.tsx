@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { WHATSAPP_HREF } from "@/lib/site";
 import { HeroMagneticCta } from "@/components/HeroMagneticCta";
 
-const HERO_IMAGE = "/hero.jpg";
+const HERO_IMAGE = "/images/hero.webp";
 
 const container = {
   hidden: { opacity: 0 },
@@ -32,12 +32,12 @@ export function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-heading"
-      className="relative min-h-[calc(100dvh-var(--header-height))] overflow-hidden bg-background scroll-mt-[var(--header-height)]"
+      className="relative min-h-[calc(100svh-var(--header-height))] overflow-hidden bg-background scroll-mt-[var(--header-height)]"
     >
       <div className="absolute inset-0">
         <Image
           src={HERO_IMAGE}
-          alt=""
+          alt="Consulta veterinária em Pelotas — ambiente da clínica no Laranjal"
           fill
           className="object-cover"
           priority
@@ -56,7 +56,7 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-var(--header-height))] w-full max-w-[1400px] flex-col justify-end px-4 pb-20 pt-3 sm:px-6 md:items-end md:justify-center md:pb-24 md:pt-6 md:pl-10 md:pr-12 lg:pr-16 xl:pr-20">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-var(--header-height))] w-full max-w-[1400px] flex-col justify-end px-4 pb-20 pt-3 sm:px-6 md:items-end md:justify-center md:pb-24 md:pt-6 md:pl-10 md:pr-12 lg:pr-16 xl:pr-20">
         <motion.div
           variants={container}
           initial="hidden"
@@ -67,23 +67,23 @@ export function Hero() {
             variants={item}
             className="text-bloom-body-sm max-w-full font-medium tracking-wide text-bloom-on-dark-low md:text-bloom-emphasis-low"
           >
-            Equipe veterinária em Pelotas · Atendimento com hora marcada
+            Clínica veterinária no Laranjal, Pelotas · Hora marcada
           </motion.p>
           <motion.h1 variants={item} id="hero-heading" className="hero-display">
             <span className="font-semibold text-bloom-on-dark-high md:text-bloom-emphasis-high">
               Cuidado clínico de verdade
             </span>{" "}
             <span className="text-bloom-on-dark-mid md:text-bloom-emphasis-mid">
-              para tutores que não abrem mão do bem-estar do pet
+              para quem leva o bem-estar do pet a sério
             </span>
           </motion.h1>
           <motion.p
             variants={item}
             className="hero-intro max-w-full text-bloom-on-dark-mid md:text-bloom-emphasis-mid"
           >
-            Consultas, vacinação, exames e cirurgias com orientação clara.
-            Acompanhamento contínuo para cães e gatos — do preventivo ao
-            pós-operatório.
+            Consultas, vacinação, exames e cirurgias com explicações que você
+            entende. Cães e gatos — do preventivo ao pós-operatório, com
+            continuidade de cuidado.
           </motion.p>
           <motion.div variants={item} className="flex w-full justify-end pt-1">
             <HeroMagneticCta

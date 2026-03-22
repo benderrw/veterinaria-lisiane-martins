@@ -1,58 +1,50 @@
 "use client";
 
+import Image from "next/image";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-import { FaqIllustration } from "./FaqIllustration";
 import { SectionWrapper } from "@/components/SectionWrapper";
+import { FAQ_ITEMS } from "@/lib/faq-data";
 
-const FAQ_ITEMS = [
-  {
-    id: "horario",
-    question: "Quais são os horários de atendimento?",
-    answer:
-      "Segunda a sexta, das 9h às 18h. Confirme pelo WhatsApp ou telefone e agende com hora marcada — assim reduzimos espera e dedicamos mais tempo ao seu pet.",
-  },
-  {
-    id: "primeira-consulta",
-    question: "Preciso agendar a primeira consulta?",
-    answer:
-      "Sim. Entre em contato pelo WhatsApp ou telefone para agendar. Na primeira consulta, traga o histórico de vacinas e cuidados do seu pet, se tiver, para avaliarmos tudo com calma.",
-  },
-  {
-    id: "sem-agendar",
-    question: "Posso ir sem agendar?",
-    answer:
-      "Trabalhamos com hora marcada para garantir atenção e organização. Se precisar de encaixe, chame no WhatsApp: avaliamos a possibilidade conforme a agenda do dia.",
-  },
-  {
-    id: "especies",
-    question: "Vocês atendem apenas cães e gatos?",
-    answer:
-      "Sim. Nossa equipe está focada no cuidado clínico de cães e gatos, com protocolos e equipamentos adequados a essas espécies.",
-  },
-  {
-    id: "valores",
-    question: "Consigo saber valores antes da consulta?",
-    answer:
-      "Valores podem variar conforme o procedimento. No WhatsApp ou telefone explicamos o que será feito e as opções de pagamento, para você decidir com transparência.",
-  },
-  {
-    id: "emergencia",
-    question: "Atendem emergências?",
-    answer:
-      "Em urgência, ligue ou envie mensagem no WhatsApp. Orientamos o melhor encaminhamento e, quando possível, encaixamos atendimento conforme a gravidade e a disponibilidade.",
-  },
-  {
-    id: "formas-pagamento",
-    question: "Quais formas de pagamento são aceitas?",
-    answer:
-      "Pix, cartão e outras opções podem estar disponíveis. Confirme no agendamento ou na recepção o que melhor se aplica ao seu caso.",
-  },
-];
+/** Troca o ficheiro em `public/` quando tiveres o design final. */
+const FAQ_BG_IMAGE = "/images/confused-dog.png";
+
+/**
+ * Colunas do acordeão em `lg` (resto da grelha 12 = zona da imagem).
+ * Manter igual a `lg:col-span-*` no JSX (Tailwind não aceita classe dinâmica).
+ */
+const FAQ_ACCORDION_COLS = 6;
+
+const FAQ_GRID_COLS = 12;
+
+/** Igual a `gap-10` na grelha — o fundo começa após o gap que segue a última coluna do acordeão. */
+const FAQ_GRID_GAP_REM = 2.5;
+
+/**
+ * Início da primeira coluna *depois* do acordeão (após `FAQ_ACCORDION_COLS` colunas + gaps).
+ * innerLeft + k×track + k×gap, com k = FAQ_ACCORDION_COLS.
+ */
+const faqBleedLeftFromSection = `calc(2rem + (100% - 4rem - min(80rem, calc(100% - 4rem))) / 2 + ${FAQ_ACCORDION_COLS} * (min(80rem, calc(100% - 4rem)) - 11 * ${FAQ_GRID_GAP_REM}rem) / ${FAQ_GRID_COLS} + ${FAQ_ACCORDION_COLS} * ${FAQ_GRID_GAP_REM}rem)`;
+
+const faqDesktopBleed = (
+  <div
+    className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden lg:block"
+    style={{ left: faqBleedLeftFromSection }}
+    aria-hidden
+  >
+    <Image
+      src={FAQ_BG_IMAGE}
+      alt=""
+      fill
+      className="object-cover"
+      sizes="55vw"
+    />
+  </div>
+);
 
 export function FaqSection() {
   return (
@@ -60,8 +52,9 @@ export function FaqSection() {
       id="faq"
       variant="faq"
       as="section"
-      className="border-t border-border bg-surface"
+      className="border-t border-border bg-surface overflow-x-clip"
       aria-labelledby="faq-heading"
+      bleedBackground={faqDesktopBleed}
     >
       <div className="flex flex-col gap-10">
         <h2
@@ -70,8 +63,8 @@ export function FaqSection() {
         >
           Perguntas frequentes
         </h2>
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
-          <div className="rounded-2xl border border-border/80 bg-elevated/80 p-6 shadow-[var(--shadow-faq-panel)] ring-1 ring-black/[0.04] dark:bg-elevated/50 lg:col-span-7">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-stretch">
+          <div className="rounded-2xl border border-border/80 bg-elevated/80 p-6 shadow-[var(--shadow-faq-panel)] ring-1 ring-black/[0.04] dark:bg-elevated/50 lg:col-span-6">
             <Accordion
               defaultValue={FAQ_ITEMS[0]?.id ? [FAQ_ITEMS[0].id] : []}
               className="w-full"
@@ -87,9 +80,6 @@ export function FaqSection() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
-          <div className="lg:col-span-5 lg:pl-2">
-            <FaqIllustration className="h-full" />
           </div>
         </div>
       </div>

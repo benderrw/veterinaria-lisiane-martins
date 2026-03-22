@@ -18,6 +18,10 @@ const IO_THRESHOLDS = Array.from({ length: 21 }, (_, i) => i / 20);
 
 type FabScrollState = "pending" | "show" | "hide";
 
+function nextFabState(visible: boolean): FabScrollState {
+  return visible ? "show" : "hide";
+}
+
 function elementVisibilityRatio(el: HTMLElement) {
   const rect = el.getBoundingClientRect();
   const vh = window.innerHeight;
@@ -76,26 +80,30 @@ export function FloatingWhatsAppButton() {
 
       const hero = document.getElementById("hero");
       if (!hero) {
-        setFabScrollState("show");
+        setFabScrollState((prev) =>
+          prev === "show" ? prev : nextFabState(true),
+        );
         return;
       }
 
       const nextSection = document.getElementById(NEXT_SECTION_AFTER_HERO_ID);
-      setFabScrollState(
-        computeFabVisible(hero, nextSection) ? "show" : "hide",
-      );
+      const initial = nextFabState(computeFabVisible(hero, nextSection));
+      setFabScrollState((prev) => (prev === initial ? prev : initial));
 
       io = new IntersectionObserver(
         (entries) => {
           const h = document.getElementById("hero");
           if (!h) {
-            setFabScrollState("show");
+            setFabScrollState((prev) =>
+              prev === "show" ? prev : nextFabState(true),
+            );
             return;
           }
           const next = document.getElementById(NEXT_SECTION_AFTER_HERO_ID);
-          setFabScrollState(
-            computeFabVisibleFromIoEntries(entries, h, next) ? "show" : "hide",
+          const state = nextFabState(
+            computeFabVisibleFromIoEntries(entries, h, next),
           );
+          setFabScrollState((prev) => (prev === state ? prev : state));
         },
         { threshold: IO_THRESHOLDS, rootMargin: "0px" },
       );

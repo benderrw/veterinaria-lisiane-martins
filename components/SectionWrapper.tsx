@@ -17,6 +17,8 @@ interface SectionWrapperProps {
   children: React.ReactNode;
   as?: "section" | "div";
   id?: string;
+  /** Camada atrás do contentor `max-w-7xl` (ex.: imagem full-bleed); a secção fica `relative` e o interior `z-10`. */
+  bleedBackground?: React.ReactNode;
 }
 
 export function SectionWrapper({
@@ -25,6 +27,7 @@ export function SectionWrapper({
   children,
   as: Component = "section",
   id,
+  bleedBackground,
 }: SectionWrapperProps) {
   const { maxWidth, padding } = variantStyles[variant];
   return (
@@ -33,10 +36,18 @@ export function SectionWrapper({
       className={cn(
         "flex w-full justify-center px-4 sm:px-6 lg:px-8 scroll-mt-[var(--header-height)]",
         padding,
+        bleedBackground && "relative",
         className
       )}
     >
-      <div className={cn("mx-auto flex w-full flex-col gap-8", maxWidth)}>
+      {bleedBackground}
+      <div
+        className={cn(
+          "mx-auto flex w-full flex-col gap-8",
+          maxWidth,
+          bleedBackground && "relative z-10"
+        )}
+      >
         {children}
       </div>
     </Component>

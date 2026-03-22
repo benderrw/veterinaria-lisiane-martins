@@ -2,6 +2,8 @@
 
 Visão geral do estado atual de **semântica**, **acessibilidade básica**, **SEO on-page** e **performance percebida** da landing page.
 
+**Auditoria formal (2026-03-22):** performance (CWV/lab), SEO, rich results e mapeamento para skills [marketingskills](https://skills.sh/coreyhaines31/marketingskills) — ver [AUDITORIA-PERFORMANCE-SEO-RICH-RESULTS.md](AUDITORIA-PERFORMANCE-SEO-RICH-RESULTS.md) (métricas Lighthouse locais, achados P1/P2, backlog).
+
 ---
 
 ### 1. Semântica e acessibilidade básica
@@ -9,8 +11,9 @@ Visão geral do estado atual de **semântica**, **acessibilidade básica**, **SE
 #### 1.1. Estrutura de documento
 
 - `RootLayout`:
-  - `<html lang="pt-BR" className="scroll-smooth">`:
+  - `<html lang="pt-BR">`:
     - `lang` configurado corretamente para português do Brasil.
+    - Scroll suave para âncoras via `app/globals.css`: `scroll-behavior: smooth` quando `prefers-reduced-motion: no-preference`, e `scroll-behavior: auto` em `pointer: coarse` (touch primário) para reduzir conflitos com scroll no mobile.
   - `<body>` aplica fontes e cores via classes globais.
 
 - `Home` (`app/page.tsx`):
@@ -44,10 +47,7 @@ Pontos positivos:
   - `aria-labelledby="faq-heading"` no `SectionWrapper`.
   - Título `h2` com `id` correspondente.
   - `Accordion` provê experiência acessível para expandir/perguntas (herdado do componente UI).
-
-- `FaqIllustration`:
-  - Contêiner com `aria-labelledby`.
-  - Fallback de imagem com ícone `HelpCircle` e texto de apoio.
+  - Imagem lateral (desktop) decorativa: `alt=""`, `aria-hidden` no contentor, `pointer-events-none`.
 
 Possíveis melhorias futuras:
 

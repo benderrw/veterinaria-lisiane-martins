@@ -50,7 +50,7 @@ yarn start
   - `Footer.tsx`: rodapé com logo, endereço, contatos e redes sociais.
   - `components/ui/*`: componentes de UI reutilizáveis (botões, navegação, accordions, etc.).
 - `sections/`
-  - `Hero.tsx`, `About.tsx`, `Services.tsx`, `GalleryBento.tsx`, `Testimonials.tsx`, `Contact.tsx`, `faq/FaqSection.tsx`, `faq/FaqIllustration.tsx`.
+  - `Hero.tsx`, `About.tsx`, `Services.tsx`, `GalleryBento.tsx`, `Testimonials.tsx`, `Contact.tsx`, `faq/FaqSection.tsx`.
 
 ### Documentação adicional
 
