@@ -2,6 +2,8 @@
 
 Visão geral do estado atual de **semântica**, **acessibilidade básica**, **SEO on-page** e **performance percebida** da landing page.
 
+**Auditoria formal (2026-03-22):** performance (CWV/lab), SEO, rich results e mapeamento para skills [marketingskills](https://skills.sh/coreyhaines31/marketingskills) — ver [AUDITORIA-PERFORMANCE-SEO-RICH-RESULTS.md](AUDITORIA-PERFORMANCE-SEO-RICH-RESULTS.md) (métricas Lighthouse locais, achados P1/P2, backlog).
+
 ---
 
 ### 1. Semântica e acessibilidade básica

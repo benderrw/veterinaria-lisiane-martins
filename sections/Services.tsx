@@ -29,11 +29,11 @@ const SERVICES: Service[] = [
     icon: Stethoscope,
     title: "Consultas",
     description:
-      "Atendimento clínico completo para cães e gatos, com avaliação individual e orientações para o bem-estar do seu pet.",
+      "Atendimento clínico completo para cães e gatos: avaliação individual, diagnóstico quando indicado e plano de cuidado alinhado ao seu pet.",
     detail:
-      "Também oferecemos teleorientação com hora marcada: esclarecimento de dúvidas, retornos e continuidade do cuidado com explicação acessível. Quando o caso exigir exame físico ou procedimento, o atendimento segue presencialmente na clínica.",
+      "Teleorientação com hora marcada para dúvidas, retornos e continuidade do cuidado — sempre em linguagem clara. Quando for necessário exame físico ou procedimento, combinamos a consulta presencial na clínica.",
     featuredImage: {
-      src: "/images/veterinary-consultation.jpg",
+      src: "/images/veterinary-consultation.webp",
       alt:
         "Ambiente de consulta veterinária, atendimento clínico para cães e gatos.",
     },
@@ -93,14 +93,14 @@ export function Services() {
       <div className="flex flex-col gap-12 lg:gap-16">
         <div className="flex max-w-2xl flex-col gap-3 lg:max-w-none">
           <p className="text-bloom-body-sm font-medium uppercase tracking-wider text-muted-foreground">
-            Pelotas · Cães e gatos
+            Laranjal, Pelotas · Cães e gatos
           </p>
           <h2 className="text-bloom-h2 font-light text-foreground tracking-tight">
             Nossos serviços
           </h2>
           <p className="text-bloom-body text-muted-foreground leading-relaxed max-w-[65ch]">
-            Atendimento organizado por hora marcada, com foco em explicação clara
-            e continuidade do cuidado.
+            Hora marcada, equipe dedicada e linguagem acessível: você sabe o que
+            foi feito, por quê e o que vem a seguir no cuidado do seu pet.
           </p>
         </div>
         <motion.div
