@@ -54,6 +54,14 @@ Possíveis melhorias futuras:
 - Adicionar **skip link** visível ao foco para pular direto para `#main`.
 - Revisar a hierarquia de headings completa em todas as seções para garantir ordem estrita (`h1` único, depois `h2`, etc.) em todo o documento.
 
+#### 1.3. Layout e tipografia Bloom
+
+Referência documental: repositório Bloom (`README.md`, secção *Sistema de design*). Neste projeto:
+
+- **Grelha horizontal:** 4 colunas (mobile) → 8 (tablet) → 12 (desktop). Utilitário CSS: classe `.grid-bloom` em `app/globals.css` (`grid-cols-4 md:grid-cols-8 lg:grid-cols-12`, `gap-8`).
+- **Espaçamento:** preferir múltiplos de 8px (`gap-8`, `gap-16`, padding em `SectionWrapper` alinhado a essa ideia).
+- **Tipografia:** tokens `--type-*`, `--lead-*`, `--track-*` e utilitários `text-bloom-h1` … `text-bloom-body` no mesmo ficheiro; `h1` global e `p` com escala base em `@layer base`. Famílias **Plus Jakarta Sans** (títulos) e **Inter** (corpo) permanecem definidas em `app/layout.tsx` (sem troca para Cinzel/JetBrains da doc Bloom).
+
 ---
 
 ### 2. SEO on-page

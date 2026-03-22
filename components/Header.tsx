@@ -3,13 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Menu,
-  Stethoscope,
-  Mail,
-  Info,
-  HelpCircle,
-} from "lucide-react";
+import { List, Stethoscope } from "@phosphor-icons/react";
 import {
   Sheet,
   SheetContent,
@@ -17,65 +11,29 @@ import {
 } from "@/components/ui/sheet";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const NAV_GROUPS = [
-  {
-    label: "Informações",
-    items: [
-      { href: "#sobre", label: "Sobre nós", icon: Info },
-      { href: "#faq", label: "FAQ", icon: HelpCircle },
-    ],
-  },
-] as const;
-
-const NAV_LINKS = [
+const NAV_LINKS: Array<{
+  href: string;
+  label: string;
+  icon?: typeof Stethoscope;
+}> = [
   { href: "#servicos", label: "Serviços", icon: Stethoscope },
-  { href: "#contato", label: "Contato", icon: Mail },
-] as const;
+  { href: "#sobre", label: "Sobre nós" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#contato", label: "Contato" },
+];
 
 function DesktopNav() {
   return (
     <NavigationMenu align="end" className="max-w-none">
       <NavigationMenuList className="gap-6">
-        {/* Grupo Informações (dropdown) */}
-        {NAV_GROUPS.map((group) => (
-          <NavigationMenuItem key={group.label}>
-            <NavigationMenuTrigger className="text-sm font-medium text-foreground/90 hover:text-primary bg-transparent hover:bg-muted/50 h-auto py-1.5">
-              {group.label}
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="w-48 gap-1 p-1 flex flex-col">
-                {group.items.map(({ href, label, icon: Icon }) => (
-                  <li key={href}>
-                    <NavigationMenuLink
-                      render={<Link href={href} />}
-                      className="cursor-pointer"
-                    >
-                      <Icon className="size-4 shrink-0" aria-hidden />
-                      {label}
-                    </NavigationMenuLink>
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        ))}
-        {/* Links diretos com ícone */}
         {NAV_LINKS.map(({ href, label, icon: Icon }) => (
           <NavigationMenuItem key={href}>
             <NavigationMenuLink
@@ -85,7 +43,9 @@ function DesktopNav() {
                 "text-foreground/90 hover:text-primary hover:bg-muted/50 bg-transparent h-auto py-1.5"
               )}
             >
-              <Icon className="size-4 shrink-0" aria-hidden />
+              {Icon ? (
+                <Icon className="size-4 shrink-0" weight="duotone" aria-hidden />
+              ) : null}
               {label}
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -108,43 +68,16 @@ function MobileNav({ onLinkClick }: { onLinkClick: () => void }) {
           onClick={onLinkClick}
           className={rowLink}
         >
-          <Icon className="size-5 shrink-0 text-foreground/70" aria-hidden />
+          {Icon ? (
+            <Icon
+              className="size-5 shrink-0 text-foreground/70"
+              weight="duotone"
+              aria-hidden
+            />
+          ) : null}
           <span>{label}</span>
         </Link>
       ))}
-      {/* Accordion Informações: mesmo padrão visual */}
-      <Accordion type="single" collapsible className="w-full">
-        {NAV_GROUPS.map((group) => (
-          <AccordionItem key={group.label} value={group.label} className="border-0">
-            <AccordionTrigger
-              className={cn(
-                "w-full py-3 px-6 hover:no-underline rounded-md hover:bg-muted/50",
-                "text-base font-medium text-foreground/90 text-left"
-              )}
-            >
-              {group.label}
-            </AccordionTrigger>
-            <AccordionContent className="pb-2 pt-0">
-              <div className="flex flex-col -mx-2">
-                {group.items.map(({ href, label, icon: Icon }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    onClick={onLinkClick}
-                    className={cn(
-                      rowLink,
-                      "py-2.5 px-6"
-                    )}
-                  >
-                    <Icon className="size-5 shrink-0 text-foreground/70" aria-hidden />
-                    <span>{label}</span>
-                  </Link>
-                ))}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
     </nav>
   );
 }
@@ -173,9 +106,9 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
+      className="header-liquid-glass sticky top-0 z-40 w-full border-b bg-background/90 backdrop-blur-md supports-backdrop-filter:bg-background/70"
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="#hero"
           className="flex items-center focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded"
@@ -191,18 +124,16 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop: NavigationMenu com dropdown + links com ícones */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex">
           <DesktopNav />
         </div>
 
-        {/* Mobile: Sheet + links diretos + Accordion */}
-        <div className="md:hidden">
+        <div className="flex items-center md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               render={
                 <Button variant="ghost" size="icon" aria-label="Abrir menu">
-                  <Menu className="size-5" />
+                  <List className="size-5" weight="duotone" aria-hidden />
                 </Button>
               }
             />

@@ -1,18 +1,38 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { WHATSAPP_HREF } from "@/lib/site";
+import { HeroMagneticCta } from "@/components/HeroMagneticCta";
 
 const HERO_IMAGE = "/hero.jpg";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 120, damping: 22 },
+  },
+};
 
 export function Hero() {
   return (
     <section
       id="hero"
       aria-labelledby="hero-heading"
-      className="relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden bg-muted scroll-mt-[var(--header-height)]"
+      className="relative min-h-[calc(100dvh-var(--header-height))] overflow-hidden bg-background scroll-mt-[var(--header-height)]"
     >
       <div className="absolute inset-0">
         <Image
@@ -25,49 +45,57 @@ export function Hero() {
         />
       </div>
 
-      <motion.div
-        className="relative z-10 flex w-full max-w-7xl flex-col items-center gap-8 px-4 py-24 text-center sm:px-6 lg:grid lg:grid-cols-[1fr_minmax(0,560px)] lg:place-items-center lg:px-8 lg:pr-12"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <div aria-hidden="true" className="hidden lg:block" />
-        <div className="flex w-full max-w-xl flex-col items-center gap-8 text-center lg:items-end lg:text-right">
-          <h1
-            id="hero-heading"
-            className="text-4xl font-light leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl [font-family:var(--font-heading),sans-serif] [text-shadow:0_2px_10px_rgba(0,0,0,0.7),0_0_2px_rgba(0,0,0,0.9)]"
+      {/* Mobile: scrim na base — copy sobre a foto full-bleed (sem faixa “página” à parte) */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/84 from-[12%] via-black/45 via-[55%] to-transparent md:hidden"
+        aria-hidden
+      />
+      {/* md+: gradiente para a direita — imagem respira à esquerda, copy legível à direita */}
+      <div
+        className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-transparent from-[8%] via-background/55 via-[42%] to-background to-[96%] md:block"
+        aria-hidden
+      />
+
+      <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-var(--header-height))] w-full max-w-[1400px] flex-col justify-end px-4 pb-20 pt-3 sm:px-6 md:items-end md:justify-center md:pb-24 md:pt-6 md:pl-10 md:pr-12 lg:pr-16 xl:pr-20">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="ml-auto flex w-full max-w-md flex-col items-end gap-5 text-right md:max-w-sm md:gap-6 lg:max-w-md"
+        >
+          <motion.p
+            variants={item}
+            className="text-bloom-body-sm max-w-full font-medium tracking-wide text-bloom-on-dark-low md:text-bloom-emphasis-low"
           >
-            <span className="font-semibold">Clínica Veterinária</span> em Pelotas com cuidado completo para seu pet
-          </h1>
-          <p className="text-lg text-white/95 [text-shadow:0_2px_8px_rgba(0,0,0,0.7),0_0_2px_rgba(0,0,0,0.8)]">
-            Consultas, vacinação, exames e cirurgias com atendimento humanizado. Acompanhamento contínuo para cães e gatos em Pelotas.
-          </p>
-          <div className="flex w-full max-w-sm flex-col gap-3 sm:flex-row sm:max-w-none sm:gap-4 lg:justify-end">
-            <a
-              href={process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/5553981166455"}
-              target="_blank"
-              rel="noopener noreferrer"
+            Equipe veterinária em Pelotas · Atendimento com hora marcada
+          </motion.p>
+          <motion.h1 variants={item} id="hero-heading" className="hero-display">
+            <span className="font-semibold text-bloom-on-dark-high md:text-bloom-emphasis-high">
+              Cuidado clínico de verdade
+            </span>{" "}
+            <span className="text-bloom-on-dark-mid md:text-bloom-emphasis-mid">
+              para tutores que não abrem mão do bem-estar do pet
+            </span>
+          </motion.h1>
+          <motion.p
+            variants={item}
+            className="hero-intro max-w-full text-bloom-on-dark-mid md:text-bloom-emphasis-mid"
+          >
+            Consultas, vacinação, exames e cirurgias com orientação clara.
+            Acompanhamento contínuo para cães e gatos — do preventivo ao
+            pós-operatório.
+          </motion.p>
+          <motion.div variants={item} className="flex w-full justify-end pt-1">
+            <HeroMagneticCta
+              href={WHATSAPP_HREF}
               aria-label="Agende sua consulta (abre em nova aba)"
-              className={cn(
-                buttonVariants({ variant: "default", size: "cta" }),
-                "w-full text-base font-semibold shadow-md sm:w-auto sm:text-lg focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-2"
-              )}
+              className="w-full sm:w-auto"
             >
               Agende sua consulta
-            </a>
-            <a
-              href="#contato"
-              className={cn(
-                buttonVariants({ variant: "secondary", size: "cta" }),
-                "w-full text-base font-semibold shadow-md sm:w-auto sm:text-lg"
-              )}
-            >
-              Ver informações de contato
-            </a>
-          </div>
-        </div>
-      </motion.div>
+            </HeroMagneticCta>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

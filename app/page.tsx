@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsAppButton } from "@/components/FloatingWhatsAppButton";
@@ -7,6 +6,7 @@ import { Services } from "@/sections/Services";
 import { About } from "@/sections/About";
 import { Contact } from "@/sections/Contact";
 import { FaqSection } from "@/sections/faq/FaqSection";
+import { FinalCta } from "@/sections/FinalCta";
 
 export default function Home() {
   return (
@@ -18,6 +18,7 @@ export default function Home() {
         <About />
         <Contact />
         <FaqSection />
+        <FinalCta />
       </main>
       <Footer />
       <FloatingWhatsAppButton />

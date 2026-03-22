@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Instagram, HelpCircle } from "lucide-react";
+import { Question } from "@phosphor-icons/react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const WHATSAPP_URL =
   process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/5553981166455";
-const INSTAGRAM_URL = "https://www.instagram.com/vet.lisianebtmartins/";
 const FAQ_IMAGE = "/faq-illustration.png";
 
 export function FaqIllustration({ className }: { className?: string }) {
@@ -36,21 +35,21 @@ export function FaqIllustration({ className }: { className?: string }) {
             />
           ) : (
             <div className="flex size-full items-center justify-center text-muted-foreground" aria-hidden>
-              <HelpCircle className="size-10" />
+              <Question className="size-10" weight="duotone" />
             </div>
           )}
         </div>
         <h3
           id="faq-illustration-heading"
-          className="mt-4 text-lg font-medium text-foreground [font-family:var(--font-heading),sans-serif]"
+          className="text-bloom-h5 mt-4 font-medium text-foreground"
         >
           Ainda tem dúvidas?
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Tire suas dúvidas pelo WhatsApp ou nos acompanhe no Instagram.
+        <p className="text-bloom-body-sm mt-2 text-muted-foreground">
+          Tire suas dúvidas pelo WhatsApp — respondemos com calma.
         </p>
       </div>
-      <div className="mt-auto flex flex-col gap-2 pt-6">
+      <div className="mt-auto pt-6">
         <a
           href={WHATSAPP_URL}
           target="_blank"
@@ -59,15 +58,6 @@ export function FaqIllustration({ className }: { className?: string }) {
         >
           <WhatsAppIcon className="size-4" aria-hidden />
           Fale pelo WhatsApp
-        </a>
-        <a
-          href={INSTAGRAM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: "secondary", size: "cta" }), "w-full")}
-        >
-          <Instagram className="size-4" aria-hidden />
-          Instagram
         </a>
       </div>
     </div>
